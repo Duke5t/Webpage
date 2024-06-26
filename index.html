@@ -8,7 +8,14 @@
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> -->
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
+body {
+    font-size:16px; 
+    background-image: url('./images/background5.jpg');
+    z-index: 0;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-attachment: fixed;
+}
 .half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .half img:hover{opacity:1}
 </style>
@@ -16,93 +23,54 @@ body {font-size:16px;}
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="sidebar red collapse top large" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+<nav class="sidebar grad collapse top large" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="window_close()" class="button hide-large display-topleft" style="width:100%;font-size:22px">Close Menu</a>
-  <!-- <img class="display-topleft" src="./images/SBLogo2.png" alt="Logo" style="width:100%"> -->
   
-  <div class="bar-block">
-    <!-- <h3 class="padding-64"></h3> -->
-    <h3 class="padding-64"></h3>
-    <a href="#" onclick="window_close()" class="bar-item button hover-white">Home</a> 
-    <a href="#showcase" onclick="window_close()" class="bar-item button hover-white">Experience</a> 
-    <a href="#services" onclick="window_close()" class="bar-item button hover-white">Services</a> 
-    <a href="#designers" onclick="window_close()" class="bar-item button hover-white">Studio</a> 
-    <a href="#packages" onclick="window_close()" class="bar-item button hover-white">Packages</a> 
-    <a href="#contact" onclick="window_close()" class="bar-item button hover-white">Contact</a>
+  <div class="bar-block"> 
+    <img class="display-topleft" src="./images/SBLogo3.png" alt="Logo" style="width:100%">
+    <h3 class="padding-top-64"></h3>
+    <h3 class="padding-top-64"></h3>
+    <h3 class="padding-top-64"></h3>
+    <a href="#" onclick="window_close()" class="bar-item button hover-red">Home</a> 
+    <a href="#studio" onclick="window_close()" class="bar-item button hover-red">Studio</a> 
+    <a href="#services" onclick="window_close()" class="bar-item button hover-red">Services</a> 
+    <a href="#packages" onclick="window_close()" class="bar-item button hover-red">Packages</a> 
+    <a href="#experience" onclick="window_close()" class="bar-item button hover-red">Experience</a> 
+    <a href="#contact" onclick="window_close()" class="bar-item button hover-red">Contact</a>
   </div>
 </nav>
 
-<!-- Top menu on small screens -->
-<header class="container top hide-large red xlarge padding">
-  <a href="javascript:void(0)" class="button red margin-right" onclick="open()">☰</a>
-  <span>Spencer Brule</span>
+<!-- Top menu -->
+<!-- <header class="container top new-blue xlarge display-top padding-top-16">
+    <div class="new-blue right">
+        <a href="#contact" onclick="window_close()" class="button hover-black">Contact</a>
+
+    </div> -->
+
+    <span></span>
 </header>
 
+<!-- Top menu on small screens -->
+<header class="container top hide-large new-blue xlarge padding">
+    <a href="javascript:void(0)" class="button new-blue margin-right" onclick="open()">☰</a>
+    <span>Spencer Brule</span>
+  </header>
+
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="overlay hide-large" onclick="window_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<!-- <div class="overlay hide-large" onclick="window_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
 
 <!-- !PAGE CONTENT! -->
-<div class="main" style="margin-left:340px;margin-right:40px">
+<div class="main" style="margin-left:290px;margin-right:40px">
 
   <!-- Header -->
-  <div class="container" style="margin-top:80px" id="showcase">
+  <div class="container opacity" style="margin-top:80px" id="Header">
     <h1 class="xxxlarge"><b>Spencer Brule Music</b></h1>
   </div>
-  
-  <div class="container" style="margin-top:40px" id="showcase">
-    <h1 class="xxxlarge text-blue"><b>Experience</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
-  </div>
-  
-  <!-- Photo grid (modal) -->
-  <div class="row-padding">
-    <div class="half">
-      <img src="./images/music.jpg" style="width:100%" onclick="onClick(this)" alt="Recital Photo">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/music1.jpg" style="width:100%" onclick="onClick(this)" alt="Performace, dark">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/music2.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, light">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-    </div>
 
-    <div class="half">
-      <img src="./images/music1.jpg" style="width:100%" onclick="onClick(this)" alt="Character Photo">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/music2.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, dark">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/music.jpg" style="width:100%" onclick="onClick(this)" alt="Performance, light">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-    </div>
-  </div>
 
-  <!-- Modal for full size images on click-->
-  <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="button black xxlarge display-topright">×</span>
-    <div class="modal-content animate-zoom center transparent padding-64">
-      <img id="img01" class="image">
-      <p id="caption"></p>
-    </div>
-  </div>
 
-  <!-- Services -->
-  <div class="container" id="services" style="margin-top:75px">
-    <h1 class="xxxlarge text-blue"><b>Services</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
-    <p>Saxophone lessons that focus on inspiring and cultivating joy for music!</p>
-    <p>*******Some text about services - what we do and what we offer. Beginner & intermediate students 
-        <br>
-        <ul><li>Structured Curriculum: It can help keep you on track.</li>
-        <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask questions and get feedback in real time. </li>
-        <li>Progress Tracking: Seeing your improvements can help keep you motivated. </li>
-        <li>In-Depth Analysis Tools: Providing the tools to build your skills. </li>
-        <li>Personalized Feedback: This is also crucial to skill improvement. </li>
-        <li>Advanced Tutorials: These are excellent additions to teacher-guided lessons.</li>
-        </ul>
-    </p>
-  </div>
-  
-  <!-- Designers -->
-  <div class="container" id="designers" style="margin-top:75px">
+  <!-- Studio -->
+  <div class="container" id="studio" style="margin-top:75px">
     <h1 class="xxxlarge text-blue"><b>Studio</b></h1>
     <hr style="width:50px;border:5px solid red" class="round">
     <p>"The Best Studio in Winnipeg." -Spencer Brule</p>
@@ -112,8 +80,15 @@ body {font-size:16px;}
     </p>
     <p><b>Our team is thoughtfully chosen</b>:</p>
   </div>
-
-  <!-- The Team -->
+ <!-- Modal for full size images on click-->
+ <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="button black xxlarge display-topright">×</span>
+    <div class="modal-content animate-zoom center transparent padding-64">
+      <img id="img01" class="image">
+      <p id="caption"></p>
+    </div>
+  </div>
+    <!-- The Team -->
   <div class="row-padding grayscale">
     <div class="col m4 margin-bottom">
       <div class="light-grey">
@@ -147,11 +122,29 @@ body {font-size:16px;}
     </div>
   </div>
 
+  <!-- Services -->
+  <div class="container" id="services" style="margin-top:75px">
+    <h1 class="xxxlarge text-blue"><b>Services</b></h1>
+    <hr style="width:50px;border:5px solid red" class="round">
+    <p>Saxophone lessons that focus on inspiring and cultivating joy for music!</p>
+    <p>*******Some text about services - what we do and what we offer. Beginner & intermediate students 
+        <br>
+        <ul><li>Structured Curriculum: It can help keep you on track.</li>
+        <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask questions and get feedback in real time. </li>
+        <li>Progress Tracking: Seeing your improvements can help keep you motivated. </li>
+        <li>In-Depth Analysis Tools: Providing the tools to build your skills. </li>
+        <li>Personalized Feedback: This is also crucial to skill improvement. </li>
+        <li>Advanced Tutorials: These are excellent additions to teacher-guided lessons.</li>
+        </ul>
+    </p>
+  </div>
+  
+
   <!-- Packages / Pricing Tables -->
   <div class="container" id="packages" style="margin-top:75px">
     <h1 class="xxxlarge text-blue"><b>Packages</b></h1>
     <hr style="width:50px;border:5px solid red" class="round">
-    <p>For a limited time, enjoy the perks of lesson packages. Lessons can also provided on a pay-per-lesson basis. 
+    <p>For a limited time, enjoy the perks of lesson packages. Lessons are also available on a per-lesson basis. 
     <br>For individual lesson booking, use the Contact form at the bottom of the page.</p>
   </div>
 <!-- Three Month Package -->
@@ -165,15 +158,17 @@ body {font-size:16px;}
         <li class="padding-16">12.5% discount</li>
         <li class="padding-16">Three Month Package</li>
         <li class="padding-16">
-          <h2>$ 35 <span class="opacity" style="font-size:10px">  / 30min lesson</span></h2>
-          <span class="opacity">$420 Total</span>
+          <h2>$ 00 <span class="opacity" style="font-size:10px">  / 30min lesson</span></h2>
+          <!-- 35 -->
+          <span class="opacity">$000 Total</span>
+          <!-- 420 -->
         </li>
         <li class="light-grey padding-24">
           <button class="button white padding-large hover-black">Sign Up</button>
         </li>
       </ul>
     </div>
-<!-- Year Long Plan -->
+<!-- Pricing-->
     <div class="half">
       <ul class="ul light-grey center">
         <li class="red xlarge padding-32">Advanced Lessons</li>
@@ -183,8 +178,10 @@ body {font-size:16px;}
         <li class="padding-16">25% discount</li>
         <li class="padding-16">Three Month Package</li>
         <li class="padding-16">
-          <h2>$ 60 <span class="opacity" style="font-size:10px">  / 1hr lesson</span></h2>
-          <span class="opacity">$720 Total</span>
+          <h2>$ 00 <span class="opacity" style="font-size:10px">  / 1hr lesson</span></h2>
+          <!-- 60 -->
+          <span class="opacity">$000 Total</span>
+          <!-- 720 -->
         </li>
         <li class="light-grey padding-24">
           <button class="button red padding-large hover-black">Sign Up</button>
@@ -192,7 +189,35 @@ body {font-size:16px;}
       </ul>
     </div>
   </div>
-  
+
+
+  <!-- Experience -->
+  <div class="container" style="margin-top:40px" id="experience">
+    <h1 class="xxxlarge text-blue"><b>Experience</b></h1>
+    <hr style="width:50px;border:5px solid red" class="round">
+  </div>
+
+  <div class="row-padding">
+    <div class="half">
+      <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="Bell Centre">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <img src="./images/mil1.jpg" style="width:100%" onclick="onClick(this)" alt="JetStream Alto">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, light">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+    </div>
+
+    <div class="half">
+      <img src="./images/mil4.jpg" style="width:100%" onclick="onClick(this)" alt="Character Photo">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <img src="./images/mil5.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, dark">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <img src="./images/mil2.jpg" style="width:100%" onclick="onClick(this)" alt="Performance, light">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+    </div>
+  </div>
+
+
   <!-- Contact -->
   <div class="container" id="contact" style="margin-top:75px">
     <h1 class="xxxlarge text-red"><b>Contact</b></h1>
@@ -217,10 +242,6 @@ body {font-size:16px;}
 
 <!-- End page content -->
 </div>
-
-<!-- W3.CSS Container -->
-<div class="light-grey container padding-32" style="margin-top:75px;padding-right:58px"><p class="right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="hover-opacity">w3.css</a></p></div>
-
 <script>
 // Script to open and close sidebar
 function open() {
