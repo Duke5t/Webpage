@@ -7,15 +7,6 @@
 <link rel="stylesheet" href="stylesheet.css">
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> -->
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {
-    font-size:16px; 
-    background-image: url('./images/background5.jpg');
-    z-index: 0;
-    background-repeat: no-repeat; 
-    background-size: cover;
-    background-attachment: fixed;
-}
 .half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .half img:hover{opacity:1}
 </style>
@@ -30,13 +21,13 @@ body {
     <img class="display-topleft" src="./images/SBLogo3.png" alt="Logo" style="width:100%">
     <h3 class="padding-top-64"></h3>
     <h3 class="padding-top-64"></h3>
-    <h3 class="padding-top-64"></h3>
-    <a href="#" onclick="window_close()" class="bar-item button hover-red">Home</a> 
-    <a href="#studio" onclick="window_close()" class="bar-item button hover-red">Studio</a> 
-    <a href="#services" onclick="window_close()" class="bar-item button hover-red">Services</a> 
-    <a href="#packages" onclick="window_close()" class="bar-item button hover-red">Packages</a> 
-    <a href="#experience" onclick="window_close()" class="bar-item button hover-red">Experience</a> 
-    <a href="#contact" onclick="window_close()" class="bar-item button hover-red">Contact</a>
+    <h3 class="padding-top-32"></h3>
+    <a href="#" onclick="window_close()" class="bar-item button hover-palette3">Home</a> 
+    <a href="#studio" onclick="window_close()" class="bar-item button hover-palette3">Studio</a> 
+    <a href="#services" onclick="window_close()" class="bar-item button hover-palette3">Services</a> 
+    <a href="#packages" onclick="window_close()" class="bar-item button hover-palette3">Packages</a> 
+    <a href="#experience" onclick="window_close()" class="bar-item button hover-palette3">Experience</a> 
+    <a href="#contact" onclick="window_close()" class="bar-item button hover-palette3">Contact</a>
   </div>
 </nav>
 
@@ -51,9 +42,9 @@ body {
 </header>
 
 <!-- Top menu on small screens -->
-<header class="container top hide-large new-blue xlarge padding">
-    <a href="javascript:void(0)" class="button new-blue margin-right" onclick="open()">☰</a>
-    <span>Spencer Brule</span>
+<header class="container top hide-large palette4 xlarge padding">
+    <a href="javascript:void(0)" class="button palette2 margin-right" onclick="open()">☰</a>
+    <span class="palette2">SPENCER BRULE</span>
   </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -64,21 +55,21 @@ body {
 
   <!-- Header -->
   <div class="container opacity" style="margin-top:80px" id="Header">
-    <h1 class="xxxlarge"><b>Spencer Brule Music</b></h1>
+    <h1 class="strong xxxlarge bold"><b>Saxophone & Clarinet Lessons<br></b></h1>
   </div>
 
 
 
   <!-- Studio -->
   <div class="container" id="studio" style="margin-top:75px">
-    <h1 class="xxxlarge text-blue"><b>Studio</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
+    <h1 class="xxxlarge palette2"><b>Studio</b></h1>
+    <hr style="margin-left:0px;margin-right:800px;border:1px solid red" class="round">
     <p>"The Best Studio in Winnipeg." -Spencer Brule</p>
-    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    <p>Our mission is to provide a safe environment where students can build musical and creative skills to enjoy for a lifetime. 
+      With emphasis on individualized learning, students receive foundational and essential skills and learn to exercise that 
+       they can experience a lifetime of success in any area.
     </p>
-    <p><b>Our team is thoughtfully chosen</b>:</p>
+    <p><b>STUDENT CATEGORIES</b>:</p>
   </div>
  <!-- Modal for full size images on click-->
  <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
@@ -92,31 +83,31 @@ body {
   <div class="row-padding grayscale">
     <div class="col m4 margin-bottom">
       <div class="light-grey">
-        <img src="./images/spencer.webp" alt="Spencer" style="width:100%">
+        <img src="./images/beginner.jpg" alt="Beginner" style="width:100%">
         <div class="container">
-          <h3>Spencer Brule</h3>
-          <p class="opacity">Studio Head</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Beginner</h3>
+          <p class="opacity">Ages 7-13</p>
+          <p> Music has been shown to enchance attention span, problem-solving, discipline, and patience. Children at this stage also benefit from developing fine motor control and social interactions.</p>
         </div>
       </div>
     </div>
     <div class="col m4 margin-bottom">
       <div class="light-grey">
-        <img src="./images/alex.jpg" alt="Alex" style="width:100%">
+        <img src="./images/youth.jpg" alt="Youth" style="width:100%">
         <div class="container">
-          <h3>Alex Miki</h3>
-          <p class="opacity">Administrator</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Youth</h3>
+          <p class="opacity">Ages 14-18</p>
+          <p>Lessons at this stage are designed to inspire creativity while relying on fundamentals to complete a well rounded musician and artist. </p>
         </div>
       </div>
     </div>
     <div class="col m4 margin-bottom">
       <div class="light-grey">
-        <img src="./images/greg.jpg" alt="Greg" style="width:100%">
+        <img src="./images/adult.jpg" alt="Adult" style="width:100%">
         <div class="container">
-          <h3>Greg "In-the-wall" Smith</h3>
-          <p class="opacity">Long-time resident</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Adult</h3>
+          <p class="opacity">Age 18+</p>
+          <p>Whether you're starting new hobby or refining your proficiency, adult lessons are tailored to suit your needs. These sessions are intended for adults looking for guidance, resources, tools, feedback, and facilitation.</p>
         </div>
       </div>
     </div>
@@ -124,13 +115,14 @@ body {
 
   <!-- Services -->
   <div class="container" id="services" style="margin-top:75px">
-    <h1 class="xxxlarge text-blue"><b>Services</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
+    <h1 class="xxxlarge palette2"><b>Services</b></h1>
+    <hr style="margin-left:0px;margin-right:800px;border:1px solid red" class="round">
     <p>Saxophone lessons that focus on inspiring and cultivating joy for music!</p>
-    <p>*******Some text about services - what we do and what we offer. Beginner & intermediate students 
+    <p>Whether you're preparing for the next RCM exam or learning your favourite Rock, Pop, or Jazz song!
         <br>
-        <ul><li>Structured Curriculum: It can help keep you on track.</li>
-        <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask questions and get feedback in real time. </li>
+        <ul>
+        <li>Structured Curriculum: It can help keep you on track.</li>
+        <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask questions and get feedback in real time.</li>
         <li>Progress Tracking: Seeing your improvements can help keep you motivated. </li>
         <li>In-Depth Analysis Tools: Providing the tools to build your skills. </li>
         <li>Personalized Feedback: This is also crucial to skill improvement. </li>
@@ -142,8 +134,8 @@ body {
 
   <!-- Packages / Pricing Tables -->
   <div class="container" id="packages" style="margin-top:75px">
-    <h1 class="xxxlarge text-blue"><b>Packages</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
+    <h1 class="xxxlarge palette2"><b>Packages</b></h1>
+    <hr style="margin-left:0px;margin-right:800px;border:1px solid red" class="round">
     <p>For a limited time, enjoy the perks of lesson packages. Lessons are also available on a per-lesson basis. 
     <br>For individual lesson booking, use the Contact form at the bottom of the page.</p>
   </div>
@@ -168,10 +160,10 @@ body {
         </li>
       </ul>
     </div>
-<!-- Pricing-->
+<!-- Advanced Lessons-->
     <div class="half">
       <ul class="ul light-grey center">
-        <li class="red xlarge padding-32">Advanced Lessons</li>
+        <li class="red-invert xlarge padding-32">Advanced Lessons</li>
         <li class="padding-16">Saxophone Lessons</li>
         <li class="padding-16">12 weeks - 1 hour lesson per week</li>
         <li class="padding-16">Best Value</li>
@@ -184,7 +176,7 @@ body {
           <!-- 720 -->
         </li>
         <li class="light-grey padding-24">
-          <button class="button red padding-large hover-black">Sign Up</button>
+          <button class="button red-invert padding-large hover-black">Sign Up</button>
         </li>
       </ul>
     </div>
@@ -193,8 +185,8 @@ body {
 
   <!-- Experience -->
   <div class="container" style="margin-top:40px" id="experience">
-    <h1 class="xxxlarge text-blue"><b>Experience</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
+    <h1 class="xxxlarge palette2"><b>Experience</b></h1>
+    <hr style="margin-left:0px;margin-right:800px;border:1px solid red" class="round">
   </div>
 
   <div class="row-padding">
@@ -203,8 +195,8 @@ body {
       <h5 class="text-black"><b>Lorem Ipsum</b></h3>
       <img src="./images/mil1.jpg" style="width:100%" onclick="onClick(this)" alt="JetStream Alto">
       <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, light">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <!-- <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, light">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3> -->
     </div>
 
     <div class="half">
@@ -212,18 +204,18 @@ body {
       <h5 class="text-black"><b>Lorem Ipsum</b></h3>
       <img src="./images/mil5.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, dark">
       <h5 class="text-black"><b>Lorem Ipsum</b></h3>
-      <img src="./images/mil2.jpg" style="width:100%" onclick="onClick(this)" alt="Performance, light">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <!-- <img src="./images/mil2.jpg" style="width:100%" onclick="onClick(this)" alt="Performance, light">
+      <h5 class="text-black"><b>Lorem Ipsum</b></h3> -->
     </div>
   </div>
 
 
   <!-- Contact -->
-  <div class="container" id="contact" style="margin-top:75px">
-    <h1 class="xxxlarge text-red"><b>Contact</b></h1>
-    <hr style="width:50px;border:5px solid red" class="round">
-    <p>Are you interested in exceling in music? Do you want to explore the world saxophone? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <form action="/action_page.php" target="_blank">
+    <div class="container" id="contact" style="margin-top:75px">
+    <h1 class="xxxlarge palette3"><b>Contact</b></h1>
+    <hr style="margin-left:0px;margin-right:800px;border:1px solid black" class="round">
+    <p>Interested in experiencing the benefits of music? Do you want to explore the world saxophone? Include a bit about yourself below!</p>
+    <form action="/send_email.php" method="POST">
       <div class="section">
         <label>Name</label>
         <input class="input border" type="text" name="Name" required>
@@ -234,14 +226,16 @@ body {
       </div>
       <div class="section">
         <label>Message</label>
-        <input class="input border" type="text" name="Message" required>
+        <input class="message border" type="text" name="Message" style="height:200px" required>
       </div>
-      <button type="submit" class="button block padding-large red margin-bottom">Send Message</button>
+      <button type="submit" class="button block padding-large palette3-invert margin-bottom">Send Message</button>
     </form>  
   </div>
 
+  
 <!-- End page content -->
 </div>
+
 <script>
 // Script to open and close sidebar
 function open() {
