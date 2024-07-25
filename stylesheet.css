@@ -21,7 +21,7 @@ template{display:none}
 body,h1,h2,h3,h4,h5 {font-family: monospace}
 body {
     font-size:16px; 
-    background-image: url('./images/background10.jpg');
+/*     background-image: url('./images/background10.jpg'); */
     z-index: 0;
     background-repeat: no-repeat; 
     background-size: cover;
