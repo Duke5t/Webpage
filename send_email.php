@@ -3,6 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form fields
     $name = htmlspecialchars(trim($_POST['Name']));
     $email = htmlspecialchars(trim($_POST['Email']));
+    $promo = htmlspecialchars(trim($_POST['PromoCode']));
     $message = htmlspecialchars(trim($_POST['Message']));
 
     // Validate email
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare the email
     $to = "spencerbrule@gmail.com"; // Replace with your email address
     $subject = "New Message from $name";
-    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+    $body = "Name: $name\nEmail: $email\nPromoCode: $promo\n\nMessage:\n$message";
     $headers = "From: $email";
 
     // Send the email

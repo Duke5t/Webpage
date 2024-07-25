@@ -11,7 +11,7 @@
 .half img:hover{opacity:1}
 </style>
 </head>
-<body style="background-image: url('./images/background10.jpg';">
+<body>
 
 <!-- Sidebar/menu -->
 <nav class="sidebar grad collapse top large" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
@@ -43,8 +43,12 @@
 
 <!-- Top menu on small screens -->
 <header class="container top hide-large palette4 xlarge padding">
-    <a href="javascript:void(0)" class="button palette2 margin-right" onclick="open()">☰</a>
-    <span class="palette2">SPENCER BRULE</span>
+    <a href="javascript:void(0)" class="button palette2 margin-right" onclick=
+    <!-- "open()" -->
+    <!--commented out script above to avoid broken button-->
+    ☰
+  </a>
+    <span class="palette2"></span>
   </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -69,7 +73,7 @@
       With emphasis on individualized learning, students receive foundational and essential skills and learn to exercise that 
        they can experience a lifetime of success in any area.
     </p>
-    <p><b>STUDENT CATEGORIES</b>:</p>
+    <a href="#contact" onclick="window_close()" class="button opacity palette3 blue-grey hover-red-invert">Book a FREE Consultation</a>
   </div>
  <!-- Modal for full size images on click-->
  <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
@@ -79,7 +83,8 @@
       <p id="caption"></p>
     </div>
   </div>
-    <!-- The Team -->
+    <!-- The Students -->
+  <h3 class="padding-top-16"></h3>
   <div class="row-padding grayscale">
     <div class="col m4 margin-bottom">
       <div class="light-grey">
@@ -93,7 +98,7 @@
     </div>
     <div class="col m4 margin-bottom">
       <div class="light-grey">
-        <img src="./images/youth.jpg" alt="Youth" style="width:100%">
+        <img src="./images/Youth.jpg" alt="Youth" style="width:100%">
         <div class="container">
           <h3>Youth</h3>
           <p class="opacity">Ages 14-18</p>
@@ -118,17 +123,44 @@
     <h1 class="xxxlarge palette2"><b>Services</b></h1>
     <hr style="margin-left:0px;margin-right:800px;border:1px solid red" class="round">
     <p>Saxophone lessons that focus on inspiring and cultivating joy for music!</p>
-    <p>Whether you're preparing for the next RCM exam or learning your favourite Rock, Pop, or Jazz song!
+    <p>Whether its preparing for the next RCM exam or learning a new favourite Rock, Pop, or Jazz song!
         <br>
         <ul>
-        <li>Structured Curriculum: It can help keep you on track.</li>
+        <li>Structured Curriculum: Some help to stay on track.</li>
         <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask questions and get feedback in real time.</li>
         <li>Progress Tracking: Seeing your improvements can help keep you motivated. </li>
         <li>In-Depth Analysis Tools: Providing the tools to build your skills. </li>
         <li>Personalized Feedback: This is also crucial to skill improvement. </li>
         <li>Advanced Tutorials: These are excellent additions to teacher-guided lessons.</li>
         </ul>
-    </p>
+      <a href="#contact" onclick="window_close()" class="button opacity palette3 blue-grey hover-red-invert">Book a FREE Consultation</a>
+     </p>
+     <!-- <h3 class="padding-top-16"></h3>
+     <div class="row-padding grayscale">
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="" alt="" style="width:100%">
+          <div class="container">
+            <h4 class="center padding-16">In the Studio</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <div class="container">
+            <h4 class="center padding-16">From Home</h4>
+            <img src="./images/background1.jpg" alt="Home" style="width:100%">
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="" alt="" style="width:100%">
+          <div class="container padding-16">
+            <h4 class="center">Online</h4>
+          </div>
+        </div>
+      </div> -->
   </div>
   
 
@@ -144,9 +176,9 @@
     <div class="half margin-bottom">
       <ul class="ul light-grey center">
         <li class="dark-grey xlarge padding-32">Short Lessons</li>
-        <li class="padding-16">Saxophone Lessons</li>
-        <li class="padding-16">12 weeks - 30 minute lesson per week</li>
         <li class="padding-16">Suitable for Beginners</li>
+        <li class="padding-16"><small>Promo Code</small><br>FIRST12</li>
+        <li class="padding-16">12 weeks - 30 minute lesson per week</li>
         <li class="padding-16">12.5% discount</li>
         <li class="padding-16">Three Month Package</li>
         <li class="padding-16">
@@ -156,7 +188,7 @@
           <!-- 420 -->
         </li>
         <li class="light-grey padding-24">
-          <button class="button white padding-large hover-black">Sign Up</button>
+          <a href="#contact" onclick="window_close()" class="button white padding-large hover-black">Sign Up</a>
         </li>
       </ul>
     </div>
@@ -164,9 +196,9 @@
     <div class="half">
       <ul class="ul light-grey center">
         <li class="red-invert xlarge padding-32">Advanced Lessons</li>
-        <li class="padding-16">Saxophone Lessons</li>
-        <li class="padding-16">12 weeks - 1 hour lesson per week</li>
         <li class="padding-16">Best Value</li>
+        <li class="padding-16"><small>Promo Code</small><br>FULL12</li>
+        <li class="padding-16">12 weeks - 1 hour lesson per week</li>
         <li class="padding-16">25% discount</li>
         <li class="padding-16">Three Month Package</li>
         <li class="padding-16">
@@ -176,7 +208,7 @@
           <!-- 720 -->
         </li>
         <li class="light-grey padding-24">
-          <button class="button red-invert padding-large hover-black">Sign Up</button>
+          <a href="#contact" onclick="window_close()" class="button red-invert padding-large hover-black">Sign Up</a>
         </li>
       </ul>
     </div>
@@ -192,7 +224,7 @@
   <div class="row-padding">
     <div class="half">
       <img src="./images/mil1.jpg" style="width:100%" onclick="onClick(this)" alt="Bell Centre">
-      <h5 class="text-black"><b>Lorem Ipsum</b></h3>
+      <h5 class="text-black"><b>Live Performance Experience</b></h3>
       <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="JetStream Alto">
       <h5 class="text-black"><b>Lorem Ipsum</b></h3>
       <!-- <img src="./images/mil3.jpg" style="width:100%" onclick="onClick(this)" alt="Interaction, light">
