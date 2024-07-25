@@ -353,17 +353,17 @@ a {
 
 /* Colors */
 .palette1,.hover-palette1:hover{}
-.palette2,.hover-palette2:hover{color: var(--accent2)}
-.palette3,.hover-palette3:hover{color: var(--accent3)}
-.text-palette3{border-color:var(--accent3)}
-.palette3-invert,.hover-palette3-invert:hover{color:var(--accent4); background-color: var(--accent3)}
+.palette2,.hover-palette2:hover{color: #71829c}
+.palette3,.hover-palette3:hover{color: var(--accent3)!important}
+.text-palette3{border-color:var(--accent3)!important}
+.palette3-invert,.hover-palette3-invert:hover{color:var(--accent4)!important; background-color: var(--accent3)!important}
 
-.palette4,.hover-palette4:hover{color:var(--accent5); background-color: var(--accent4)}
-.palette5,.hover-palette5:hover{color:var(--accent5); background-color: var(--accent5)}
+.palette4,.hover-palette4:hover{color:var(--accent5)!important; background-color: var(--accent4)!important}
+.palette5,.hover-palette5:hover{color:var(--accent5)!important; background-color: var(--accent5)!important}
 
 .amber,.hover-amber:hover{color:#000!important;background-color:#ffc107!important}
 .aqua,.hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
-.blue,.hover-blue:hover{color:#fff!important;background-color:#2196F3!important}
+.blue,.hover-blue:hover{color:#fff!important;background-color:#71829c!important}
 .new-blue,.hover-new-blue:hover{color:#fff!important;background-color:rgba(0, 118, 134, 0.56)}
 .light-blue,.hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
 .brown,.hover-brown:hover{color:#fff!important;background-color:#795548!important}
@@ -384,6 +384,7 @@ a {
 .red-invert,.hover-red-invert:hover{color:#fdf5e6!important; background-color:#f44336!important}
 .sand,.hover-sand:hover{color:#000!important;background-color:#fdf5e6!important}
 .teal,.hover-teal:hover{color:#fff!important;background-color:#009688!important}
+.brown,.hover-brown:hover{color:#fff!important;background-color:#150f07!important}
 .yellow,.hover-yellow:hover{color:#000!important;background-color:#ffeb3b!important}
 .white,.hover-white:hover{color:#000000!important;background-color:#fff!important}
 .gold,.hover-gold:hover{color:#FFD700!important}
