@@ -359,12 +359,24 @@ rgba(222, 241, 255, 0)); */
 .transparent,.hover-none:hover{background-color:transparent!important}
 .hover-none:hover{box-shadow:none!important}
 .invisible{color:transparent}
-@media screen and (max-width:800px) {
+@media screen and (max-width:600px) {
+    .h1-small {
+        font-size:32px !important;
+        text-align: center !important;
+    }
+    .h2-small {
+        font-size:20px !important;
+        text-align: center !important;
+        display: block !important;
+        margin: auto !important;
+    }
+    .p-small {
+        text-align: center !important;
+    }
     .hide-small-image {
         display:none !important;
     }
 } 
-
 /* Colors */
 .palette1,.hover-palette1:hover{}
 .palette2,.hover-palette2:hover{color: #71829c}
