@@ -241,7 +241,7 @@ rgba(222, 241, 255, 0)); */
 }.disabled *,:disabled *{
     pointer-events:none
 }
-@media screen and (max-width:600px) {
+@media screen and (max-width:800px) {
     .hide-small-image {
         display:none !important;
     }
