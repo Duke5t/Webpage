@@ -12,11 +12,6 @@ template{display:none}
 :root {
     --bg: hsl(221, 37%, 10%);
     --button-text: hsl(90, 100%, 0%);
-    --accent1: #8AAAE5!important;
-    --accent2: #8AAAE5!important;
-    --accent3: #f44336!important;
-    --accent4: #fdf5e6!important;
-    --accent5: black; 
 }
 body,h1,h2,h3,h4,h5,h6 {font-family: monospace}
 body {
@@ -246,8 +241,7 @@ rgba(222, 241, 255, 0)); */
 }.disabled *,:disabled *{
     pointer-events:none
 }
-@media (max-width:600px)
-{
+@media screen and (max-width:600px) {
     .hide-small-image {
         display:none !important;
     }
@@ -374,12 +368,12 @@ rgba(222, 241, 255, 0)); */
 /* Colors */
 .palette1,.hover-palette1:hover{}
 .palette2,.hover-palette2:hover{color: #71829c}
-.palette3,.hover-palette3:hover{color: var(--accent3)!important}
-.text-palette3{border-color:var(--accent3)!important}
-.palette3-invert,.hover-palette3-invert:hover{color:var(--accent4)!important; background-color: var(--accent3)!important}
+.palette3,.hover-palette3:hover{color: #f44336!important}
+.text-palette3{border-color:#f44336!important}
+.palette3-invert,.hover-palette3-invert:hover{color:#fdf5e6!important; background-color: #f44336!important}
 
-.palette4,.hover-palette4:hover{color:var(--accent5)!important; background-color: var(--accent4)!important}
-.palette5,.hover-palette5:hover{color:var(--accent5)!important; background-color: var(--accent5)!important}
+.palette4,.hover-palette4:hover{color:black!important; background-color: #fdf5e6!important}
+.palette5,.hover-palette5:hover{color:black!important; background-color: black!important}
 
 .amber,.hover-amber:hover{color:#000!important;background-color:#ffc107!important}
 .aqua,.hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
