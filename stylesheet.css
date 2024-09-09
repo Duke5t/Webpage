@@ -241,11 +241,6 @@ rgba(222, 241, 255, 0)); */
 }.disabled *,:disabled *{
     pointer-events:none
 }
-@media screen and (max-width:800px) {
-    .hide-small-image {
-        display:none !important;
-    }
-} 
 .btn.disabled:hover,.btn:disabled:hover{box-shadow:none}
 .badge,.tag{background-color:#000;color:#fff;display:inline-block;padding-left:8px;padding-right:8px;text-align:center}
 .badge{border-radius:50%}
@@ -364,6 +359,11 @@ rgba(222, 241, 255, 0)); */
 .transparent,.hover-none:hover{background-color:transparent!important}
 .hover-none:hover{box-shadow:none!important}
 .invisible{color:transparent}
+@media screen and (max-width:800px) {
+    .hide-small-image {
+        display:none !important;
+    }
+} 
 
 /* Colors */
 .palette1,.hover-palette1:hover{}
