@@ -364,6 +364,8 @@ rgba(222, 241, 255, 0)); */
         font-size:32px !important;
         text-align: center !important;
     }
+} 
+@media screen and (max-width:600px) {
     .h2-small {
         font-size:20px !important;
         text-align: center !important;
@@ -376,7 +378,7 @@ rgba(222, 241, 255, 0)); */
     .hide-small-image {
         display:none !important;
     }
-} 
+}
 /* Colors */
 .palette1,.hover-palette1:hover{}
 .palette2,.hover-palette2:hover{color: #71829c}
