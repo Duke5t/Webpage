@@ -359,7 +359,7 @@ rgba(222, 241, 255, 0)); */
 .transparent,.hover-none:hover{background-color:transparent!important}
 .hover-none:hover{box-shadow:none!important}
 .invisible{color:transparent}
-@media screen and (max-width:600px) {
+@media screen and (max-width:800px) {
     .h1-small {
         font-size:32px !important;
         text-align: center !important;
