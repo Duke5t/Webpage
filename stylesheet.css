@@ -370,6 +370,8 @@ rgba(222, 241, 255, 0)); */
         display: block;
         margin: auto !important;
     }
+    .xxxxlarge {
+        font-size:32px !important;
     .p-small {
         text-align: center !important;
     }
