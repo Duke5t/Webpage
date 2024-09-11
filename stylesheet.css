@@ -338,7 +338,7 @@ rgba(222, 241, 255, 0)); */
 .greyscale,.grayscale{filter:grayscale(75%)}.greyscale-min,.grayscale-min{filter:grayscale(50%)}
 .sepia{filter:sepia(75%)}.sepia-max,.hover-sepia:hover{filter:sepia(100%)}.sepia-min{filter:sepia(50%)}
 .tiny{font-size:10px!important}.small{font-size:12px!important}.medium{font-size:15px!important}.large{font-size:18px!important}
-.xlarge{font-size:24px!important}.xxlarge{font-size:36px!important}.xxxlarge{font-size:48px!important}.xxxxlarge{font-size:48px!important}.jumbo{font-size:64px!important}
+.xlarge{font-size:24px!important}.xxlarge{font-size:36px!important}.xxxlarge{font-size:48px!important}.jumbo{font-size:64px!important}
 .left-align{text-align:left!important}.right-align{text-align:right!important}.justify{text-align:justify!important}.center{text-align:center!important}
 .border-0{border:0!important}.border{border:1px solid #ccc!important} .border-double{border:3px solid black; border-style: double}
 .border-top{border-top:1px solid #ccc!important}.border-bottom{border-bottom:1px solid #ccc!important}
@@ -360,18 +360,17 @@ rgba(222, 241, 255, 0)); */
 .hover-none:hover{box-shadow:none!important}
 .invisible{color:transparent}
 @media screen and (max-width:600px) {
-    h1.h1-small{
+    .h1-small{
         font-size:32px !important;
         text-align: center !important;
     }
+
     .h2-small {
         font-size:20px !important;
         text-align: center !important;
         display: block;
         margin: auto !important;
     }
-    .xxxxlarge {
-        font-size:32px !important;
     .p-small {
         text-align: center !important;
     }
