@@ -34,10 +34,10 @@
     <h4 class="padding-top-64"></h4>
     <h4 class="padding-top-32"></h4>
     <a href="#" onclick="window_close()" class="bar-item button hover-palette3-invert">Home</a> 
-    <a href="#studio" onclick="window_close()" class="bar-item button hover-palette3-invert">Studio</a> 
+    <a href="#studio" onclick="window_close()" class="bar-item button hover-p alette3-invert">Studio</a> 
     <a href="#services" onclick="window_close()" class="bar-item button hover-palette3-invert">Services</a> 
     <a href="#packages" onclick="window_close()" class="bar-item button hover-palette3-invert">Packages</a> 
-    <a href="#experience" onclick="window_close()" class="bar-item button hover-palette3-invert">About</a> 
+    <a href="#staff" onclick="window_close()" class="bar-item button hover-palette3-invert">Staff</a> 
     <a href="#contact" onclick="window_close()" class="bar-item button hover-palette3-invert">Contact</a>
   </div>
 </nav>
@@ -53,13 +53,22 @@
 </header> -->
 
 <!-- Top menu on small screens -->
-<header class="container black top hide-large xlarge padding">
-    <a href="javascript:void(0)" class="button palette2 margin-right" onclick=
-    <!-- "open()" -->
-    <!--commented out script above to avoid broken button-->
-    ☰
-  </a>
-    <img class="display-topright" src="./images/SBLogo1.png" alt="Logo" style="height:100%">
+<header class="container black-fade top hide-large xlarge padding">
+    <a href="javascript:void(0)" class="button palette2 margin-right" onclick="open(this)">☰</a>
+    <!-- <img class="display-topright" src="" alt="Logo" style="height:100%"> -->
+    <div id="myDropdown" class="dropdown-content show dropdown-click">
+      <!-- <li href="#studio" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Studio</li> 
+      <li href="#services" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Services</li> 
+      <li href="#packages" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Packages</li> 
+      <li href="#experience" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">About</li> 
+      <li href="#contact" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Contact</li> -->
+      <a href="#studio" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Studio</a> 
+      <a href="#services" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Services</a> 
+      <li><a href="#packages" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Packages</a></li>
+      <li><a href="#staff" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Staff</a></li>
+      <li><a href="#contact" onclick="window_close()" class="dropdown-content dropdown-click dropdown-hover button hover-palette3-invert">Contact</a></li>
+    </div>
+    <!-- <img class="display-topright" src="" alt="Logo" style="height:100%"> -->
     <span class="palette2"></span>
   </header>
 
@@ -100,7 +109,6 @@
 
     <a href="#contact" onclick="window_close()" class="button opacity palette3 blue-grey hover-red-invert">Book a FREE Consultation</a>
   </div>
- <!-- Modal for full size images on click-->
   <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
     <span class="button black xxlarge display-topright">×</span>
     <div class="modal-content animate-zoom center transparent padding-64">
@@ -170,20 +178,20 @@
  
       <div class="quarter">
         <a href="#contact" class="text-black">
-          <img src="./images/clarinet4.png" style="width:100%" class="button hide-small-image round-xlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Clarinet Lessons">
+          <img src="./images/trumpet.png" style="width:100%" class="button hide-small-image round-xlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Trumpet">
         </a>
         <!-- <h6 class="text-black"><b>Clarinet Lessons</b></h6> -->
       </div>
   
       <div class="quarter">
         <a href="#contact" class="text-black">
-          <img src="./images/piano4.png" style="width:100%" class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Piano">
+          <img src="./images/clarinet4.png" style="width:100%" class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Clarinet">
         </a>
         <!-- <h6 class="text-black"><b>Piano Lessons</b></h6> -->
       </div>
       <div class="quarter">
         <a href="#contact" class="text-black">
-          <img src="./images/theory4.png" style="width:100%" class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Theory">
+          <img src="./images/piano4.png" style="width:100%" class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity" onclick="window_close()" alt="Piano">
         </a>
         <!-- <h6 class="text-black"><b>Theory Lessons</b></h4> -->
       </div>
@@ -270,48 +278,30 @@
   </div>
 
 
-  <!-- About -->
-  <div class="container" style="margin-top:40px" id="experience">
-    <h2 class="xxxlarge palette2"><b>About</b></h2>
+  <!-- Staff -->
+  <div class="container" style="margin-top:40px" id="staff">
+    <h2 class="xxxlarge palette2"><b>Our Staff</b></h2>
     <hr style="margin-left:0px;width:80px;border:1px solid red" class="round">
-
-    <h4 class="text-dark-grey center xlarge"><strong><u>Spencer Brule</u></strong></h4>
-
-    <img src="./images/spencerbrule.JPG" style="width:22%; float:left; margin-right:5px" class="round-large" alt="Spencer Brule"></src>
-
-    <span>With a soulful blend of expertise and passion, Spencer Brule stands as a pillar in the realm of saxophone education. Renowned for his commitment to excellence and unwavering dedication to mentorship, Spencer has carved a distinguished path as a professional saxophonist and teacher. </span>
-    <span><br><br>After completing a Bachelor’s of Music Degree at the University of Toronto, Spencer embarked on a mission to inspire and educate aspiring saxophonists. His teaching methodology is a harmonious blend of tradition and innovation, rooted in classical techniques while embracing contemporary trends. Spencer believes in a dynamic approach to teaching which fosters creativity and self-expression, nurturing the passion and inspiring the confidence of saxophonists. </span>
-    <span><br><br>Having held esteemed positions such as Lead Saxophone Instructor at Canadian Forces Music Division, Leader of CAF Saxophone Quartet, and Saxophone Section Leader in the RCAF Band, Spencer has inspired countless colleagues and students over his 10+ years of experience. Spencer Brule is a gifted saxophonist having performed internationally at the North American Saxophone Alliance 2022 in Hattiesburg, MS, and at the Canadian Embassy in Washington, DC. Spencer has also performed for heads of state such as the Queen of England in London, UK, Prime Minister Justin Trudeau, and Governor General Julie Payette in Ottawa, ON.</span>
-    <span><br><br>His contributions to the world of Saxophone extend far and wide, through masterclasses, clinics, private lessons, and performances leaving an indelible mark on the next generation of saxophonists. </span>
-    <span><br><br>Spencer Brule resides in Winnipeg, MB where he spends his days as a professional saxophonist and educator.</span>
   </div>
+    <div class="row-padding">
+        <h4 class="text-dark-grey xlarge"><strong><u>Spencer Brule</u></strong></h4>
 
-  <!--
-    Jordan Bio
+        <img src="./images/spencerbrule.JPG" style="width:25%; float:left; margin-right:5px" onclick="onClick(this)" class="round-large" alt="Spencer Brule"></src>
 
-    Jordan Smale began his musical studies at age 10 starting with piano, which he
-    studied for 10 years at the Brentwood School of Music in Brentwood Bay, British
-    Columbia. At age 11, Jordan picked up the trumpet for school band and he began his
-    studies with his first trumpet teacher, Joanne Allers at age 16 to begin preparing for a
-    university audition. After graduating from high school, he commenced studies at the
-    University of Victoria and completed a Bachelor of Music in Secondary Education,
-    studying under renowned trumpeters Louis Ranger and Merrie Klazek. However, Jordan
-    caught the performance bug and instead of finishing his secondary education studies,
-    he decided to pursue a Master’s Degree at the University of Alberta, under the tutelage
-    of the Edmonton Symphony Orchestra’s principal trumpet, Robin Doyon. During his time
-    in Edmonton, Jordan had the opportunity to perform with the Edmonton Symphony, as
-    well as the Royal Canadian Artillery Band. Jordan was also an in-demand trumpet
-    clinician in the Edmonton Region, working with multiple middle schools and the Alberta
-    Conservatory teaching beginner trumpet clinics. Outside of civilian life, Jordan joined
-    the Canadian Army Reserves in 2017 to join one of the professional part-time military
-    bands, starting out first with the Band of the 5 th Field Regiment RCA in Victoria, and later
-    playing with the Loyal Edmonton Regiment Band. In 2023, Jordan passed an audition a
-    spot with one of Canada’s six full time professional military bands and was posted to the
-    Royal Canadian Air Force Band in Winnipeg, Manitoba, where he calls home now.
-    Jordan has a passion for music education and performance and wishes to pass on that
-    passion to future musicians. Jordan has experience working and teaching all ages and
-    all levels and experience.
-  -->
+        <span>With a soulful blend of expertise and passion, Spencer Brule stands as a pillar in the realm of saxophone education. Renowned for his commitment to excellence and unwavering dedication to mentorship, Spencer has carved a distinguished path as a professional saxophonist and teacher. </span>
+        <span><br><br>After completing a Bachelor’s of Music Degree at the University of Toronto, Spencer embarked on a mission to inspire and educate aspiring saxophonists. His teaching methodology is a harmonious blend of tradition and innovation, rooted in classical techniques while embracing contemporary trends. Spencer believes in a dynamic approach to teaching which fosters creativity and self-expression, nurturing the passion and inspiring the confidence of saxophonists. </span>
+        <span><br><br>Having held esteemed positions such as Lead Saxophone Instructor at Canadian Forces Music Division, Leader of CAF Saxophone Quartet, and Saxophone Section Leader in the RCAF Band, Spencer has inspired countless colleagues and students over his 10+ years of experience. Spencer Brule is a gifted saxophonist having performed internationally at the North American Saxophone Alliance 2022 in Hattiesburg, MS, and at the Canadian Embassy in Washington, DC. Spencer has also performed for heads of state such as the Queen of England in London, UK, Prime Minister Justin Trudeau, and Governor General Julie Payette in Ottawa, ON.</span>
+        <span><br><br>His contributions to the world of Saxophone extend far and wide, through masterclasses, clinics, private lessons, and performances leaving an indelible mark on the next generation of saxophonists. </span>
+        <span><br><br>Spencer Brule resides in Winnipeg, MB where he spends his days as a professional saxophonist and educator.</span>
+        <h4 class="text-dark-grey xlarge"><strong><u>Jordan Smale</u></strong></h4>
+
+        <img src="./images/jordansmale.jpg" style="width:25%; float:left; margin-right:5px" onclick="onClick(this)" class="round-large" alt="Spencer Brule"></src>        
+        
+        <span>Jordan Smale began his musical studies at age 10 starting with piano, which he studied for 10 years at the Brentwood School of Music in Brentwood Bay, British Columbia. At age 11, Jordan picked up the trumpet for school band and he began his studies with his first trumpet teacher, Joanne Allers at age 16 to begin preparing for a university audition. After graduating from high school, he commenced studies at the University of Victoria and completed a Bachelor of Music in Secondary Education, studying under renowned trumpeters Louis Ranger and Merrie Klazek. However, Jordan caught the performance bug and instead of finishing his secondary education studies, he decided to pursue a Master’s Degree at the University of Alberta, under the tutelage of the Edmonton Symphony Orchestra’s principal trumpet, Robin Doyon. 
+        <span><br><br>During his time in Edmonton, Jordan had the opportunity to perform with the Edmonton Symphony, as well as the Royal Canadian Artillery Band. Jordan was also an in-demand trumpet clinician in the Edmonton Region, working with multiple middle schools and the Alberta Conservatory teaching beginner trumpet clinics. Outside of civilian life, Jordan joined the Canadian Army Reserves in 2017 to join one of the professional part-time military bands, starting out first with the Band of the 5 th Field Regiment RCA in Victoria, and later playing with the Loyal Edmonton Regiment Band. </span>
+        <span><br><br>In 2023, Jordan passed an audition a spot with one of Canada’s six full time professional military bands and was posted to the Royal Canadian Air Force Band in Winnipeg, Manitoba, where he calls home now. Jordan has a passion for music education and performance and wishes to pass on that passion to future musicians. Jordan has experience working and teaching all ages and all levels and experience. </span>
+       </div>
+
 
   <!-- Contact -->
     <div class="container" id="contact" style="margin-top:75px">
@@ -346,13 +336,26 @@
 <script>
 // Script to open and close sidebar
 function open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+  // document.getElementById("mySidebar").style.display = "block";
+  // document.getElementById("myDropdown").style.display = "block";
+  document.getElementById("myDropdown").classList.toggle("show");
 }
- 
+window.onclick = function(event) {
+  if (!event.target.matches('.dropdown-button')) {
+    var dropdown = document.getElementsByClassName("dropdown-menu");
+    var i;
+    for (i = 0; i < dropdown.length; i++) {
+      var openDropdown = dropdown[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
 function window_close() {
   document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+  document.getElementById("myDropdown").style.display = "none";
 }
 
 // Modal Image Gallery
