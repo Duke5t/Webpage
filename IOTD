@@ -89,7 +89,7 @@
             "\\int x^x dx",
             "\\int e^{x^2} dx",
             "\\int \\frac{x^2}{(x+1)^2} dx",
-            "\\int \\frac{\\ln x}{x} dx = \\frac{(\\ln x)^2}{2} + C",
+            "\\int \\frac{\\ln x}{x} dx",
             "\\int \\sqrt{1 + x^2} dx",
             "\\int \\frac{x^3}{\\sqrt{1-x^2}} dx",
             "\\int e^x x^n dx",
