@@ -17,6 +17,7 @@
             font-family: 'Patrick Hand', cursive;
             text-align: center;
             background-color: #f4f4f4;
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             margin-bottom: 20px;
@@ -31,12 +32,28 @@
             max-width: 90%;
             word-wrap: break-word;
             font-family: 'Patrick Hand', cursive;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+        .dark-mode .formula {
+            background-color: black;
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
         @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
     </style>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
 <body>
     <h1>Integral of the Day</h1>
-    <div class="formula">\[ \int x^2 \,dx = \frac{x^3}{3} + C \]</div>
+    <div class="formula" onclick="toggleDarkMode()">\[ \int x^2 \,dx = \frac{x^3}{3} + C \]</div>
 </body>
 </html>
