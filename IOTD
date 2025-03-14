@@ -16,7 +16,8 @@
             margin: 0;
             font-family: 'Patrick Hand', cursive;
             text-align: center;
-            background-color: #f4f4f4;
+            background-color: #222;
+            color: white;
             transition: background-color 0.3s, color 0.3s;
         }
         h1 {
@@ -26,34 +27,84 @@
         .formula {
             font-size: 2rem;
             padding: 20px;
-            background: white;
+            background: black;
+            color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
             max-width: 90%;
             word-wrap: break-word;
             font-family: 'Patrick Hand', cursive;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
         }
-        .dark-mode {
-            background-color: #222;
-            color: white;
+        .light-mode {
+            background-color: #f4f4f4;
+            color: black;
         }
-        .dark-mode .formula {
-            background-color: black;
-            color: white;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        .light-mode .formula {
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
     </style>
     <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+        const integrals = [
+            // Easy
+            "\\int x^2 \,dx = \\frac{x^3}{3} + C",
+            "\\int e^x \,dx = e^x + C",
+            "\\int \\sin x \,dx = -\\cos x + C",
+            "\\int \\cos x \,dx = \\sin x + C",
+            "\\int \\frac{1}{x} \,dx = \\ln|x| + C",
+            "\\int x^n \,dx = \\frac{x^{n+1}}{n+1} + C, \\quad n \\neq -1",
+            "\\int e^{ax} \,dx = \\frac{e^{ax}}{a} + C",
+            "\\int \\tan x \,dx = \\ln |\\sec x| + C",
+            
+            // Medium
+            "\\int x e^x \,dx = e^x(x - 1) + C",
+            "\\int x \sin x \,dx = -x \cos x + \sin x + C",
+            "\\int x \cos x \,dx = x \sin x + \cos x + C",
+            "\\int \\ln x \,dx = x \ln x - x + C",
+            "\\int x^3 e^x \,dx = e^x (x^3 - 3x^2 + 6x - 6) + C",
+            "\\int \\frac{1}{1+x^2} \,dx = \\tan^{-1} x + C",
+            "\\int e^x \\sin x \,dx = \\frac{1}{2} e^x (\\sin x - \\cos x) + C",
+            "\\int e^x \\cos x \,dx = \\frac{1}{2} e^x (\\sin x + \\cos x) + C",
+            
+            // Hard
+            "\\int x^x \,dx",
+            "\\int e^{x^2} \,dx",
+            "\\int \\frac{x^2}{(x+1)^2} \,dx",
+            "\\int \\frac{\\ln x}{x} \,dx = \\frac{(\\ln x)^2}{2} + C",
+            "\\int \\sqrt{1 + x^2} \,dx",
+            "\\int \\frac{x^3}{\\sqrt{1-x^2}} \,dx",
+            "\\int e^x x^n \,dx",
+            "\\int \\frac{x^2}{(x^2+1)^2} \,dx",
+            "\\int \\frac{dx}{\\sqrt{x^4 + 1}}",
+            "\\int \\sin(\\ln x) \,dx",
+            "\\int x^x \,dx = \\text{(Non-elementary, requires special functions)}"
+        ];
+
+        function getIntegralOfTheDay() {
+            const today = new Date();
+            const seed = today.getFullYear() * 10000 + today.getMonth() * 100 + today.getDate();
+            const index = seed % integrals.length;
+            return integrals[index];
         }
+
+        function setIntegral() {
+            document.getElementById("integral-display").innerHTML = `\\[ ${getIntegralOfTheDay()} \\]`;
+            MathJax.typeset();
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        window.onload = setIntegral;
     </script>
 </head>
 <body>
     <h1>Integral of the Day</h1>
-    <div class="formula" onclick="toggleDarkMode()">\[ \int x^2 \,dx = \frac{x^3}{3} + C \]</div>
+    <div id="integral-display" class="formula" onclick="toggleDarkMode()"></div>
 </body>
 </html>
