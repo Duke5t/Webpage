@@ -46,11 +46,23 @@
             color: black;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #666;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
     </style>
     <script>
         const integrals = [
-            // Easy
             "\\int x^2 \,dx",
             "\\int e^x \,dx",
             "\\int \\sin x \,dx",
@@ -59,8 +71,6 @@
             "\\int x^n \,dx",
             "\\int e^{ax} \,dx",
             "\\int \\tan x \,dx",
-            
-            // Medium
             "\\int x e^x \,dx",
             "\\int x \sin x \,dx",
             "\\int x \cos x \,dx",
@@ -69,8 +79,6 @@
             "\\int \\frac{1}{1+x^2} \,dx",
             "\\int e^x \\sin x \,dx",
             "\\int e^x \\cos x \,dx",
-            
-            // Hard
             "\\int x^x \,dx",
             "\\int e^{x^2} \,dx",
             "\\int \\frac{x^2}{(x+1)^2} \,dx",
@@ -308,16 +316,20 @@
             "\\int \frac{\sinh x}{x} \,dx",
         ];
 
-        function getIntegralOfTheDay() {
-            const today = new Date();
-            const seed = today.getFullYear() * 10000 + today.getMonth() * 100 + today.getDate();
-            const index = seed % integrals.length;
-            return integrals[index];
+        let currentIntegralIndex = 0;
+
+        function getIntegral() {
+            return integrals[currentIntegralIndex];
         }
 
         function setIntegral() {
-            document.getElementById("integral-display").innerHTML = `\\[ ${getIntegralOfTheDay()} \\]`;
+            document.getElementById("integral-display").innerHTML = `\\[ ${getIntegral()} \\]`;
             MathJax.typeset();
+        }
+
+        function nextIntegral() {
+            currentIntegralIndex = (currentIntegralIndex + 1) % integrals.length;
+            setIntegral();
         }
 
         function toggleDarkMode() {
@@ -330,5 +342,6 @@
 <body>
     <h1>Integral of the Day</h1>
     <div id="integral-display" class="formula" onclick="toggleDarkMode()"></div>
+    <button onclick="nextIntegral()">Next</button>
 </body>
 </html>
