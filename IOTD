@@ -323,20 +323,14 @@
             "\\int \\frac{\\sinh x}{x} dx"
         ];
 
-        let currentIntegralIndex = 0;
-
-        function getIntegral() {
-            return integrals[currentIntegralIndex];
+        function getRandomIntegral() {
+            const randomIndex = Math.floor(Math.random() * integrals.length);
+            return integrals[randomIndex];
         }
 
         function setIntegral() {
-            document.getElementById("integral-display").innerHTML = `\\[ ${getIntegral()} \\]`;
+            document.getElementById("integral-display").innerHTML = `\\[ ${getRandomIntegral()} \\]`;
             MathJax.typeset();
-        }
-
-        function nextIntegral() {
-            currentIntegralIndex = (currentIntegralIndex + 1) % integrals.length;
-            setIntegral();
         }
 
         function toggleDarkMode() {
@@ -349,6 +343,6 @@
 <body>
     <h1>Integral of the Day</h1>
     <div id="integral-display" class="formula" onclick="toggleDarkMode()"></div>
-    <button onclick="nextIntegral()">Next</button>
+    <button onclick="setIntegral()">Next</button>
 </body>
 </html>
