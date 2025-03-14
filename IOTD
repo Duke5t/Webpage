@@ -154,7 +154,7 @@
             "\\int \\ln(x^2) dx",
             "\\int \\tan^2 x dx",
             "\\int \\sec^2 x \\tan x dx",
-            "\\int \\frac{1}{x \sqrt{x^2-1}} dx",
+            "\\int \\frac{1}{x \\sqrt{x^2-1}} dx",
             "\\int \\frac{1}{x^3-x} dx",
             "\\int \\frac{1}{x^4-1} dx",
             "\\int \\sin^3 x dx",
