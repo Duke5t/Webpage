@@ -341,7 +341,7 @@
     </script>
 </head>
 <body>
-    <h1>Integral of the Day</h1>
+    <h1>An Integral A Day</h1>
     <div id="integral-display" class="formula" onclick="toggleDarkMode()"></div>
     <button onclick="setIntegral()">Next</button>
 </body>
