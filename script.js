@@ -48,35 +48,35 @@ const chapters = {
         ]
     },
     4: {
-        title: "Groups & Capturing",
-        description: "Learn about capturing groups and backreferences.",
+        title: "Anchors & Boundaries",
+        description: "Learn how to use start (^), end ($), and word boundaries (\b).",
         problems: [
-            { text: "Find duplicated words: go go go!", solution: /(\b\w+\b) \1/g },
-            { text: "Extract area codes from (123) 456-7890", solution: /\((\d{3})\)/ },
-            { text: "Match repeated sequences: abab, cdcd", solution: /(\w{2})\1/g },
-            { text: "Extract name from 'Hello, my name is John'", solution: /name is (\w+)/ },
-            { text: "Find HTML tags <b>bold</b>", solution: /<(\w+)>.*?<\/\1>/g },
-            { text: "Capture repeated letters in 'bookkeeper'", solution: /(.)\1/g },
-            { text: "Extract digits from 'Price: $12.99'", solution: /\$(\d+\.\d{2})/ },
-            { text: "Find 'the' followed by a word: the cat", solution: /the (\w+)/ },
-            { text: "Match parenthetical statements: (like this)", solution: /\((.*?)\)/g },
-            { text: "Extract quoted words: 'Hello world'", solution: /'(.*?)'/g }
+            { text: "Start and end markers", solution: /^Start|End$/ },
+            { text: "Find words that start with T", solution: /\bT\w+/g },
+            { text: "Capture numbers at the end: Order #1234", solution: /\d+$/ },
+            { text: "Find lines starting with Hello", solution: /^Hello/gm },
+            { text: "Match entire sentence", solution: /^.*$/ },
+            { text: "Extract words alone: dog, cat, fish", solution: /\b\w+\b/g },
+            { text: "Find question sentences?", solution: /^.*\?$/ },
+            { text: "Match digits at the start: 123abc", solution: /^\d+/ },
+            { text: "Capture words ending with 'ing'", solution: /\b\w+ing\b/g },
+            { text: "Find hashtags: #regex", solution: /#\w+/g }
         ]
     },
     5: {
-        title: "Assertions & Lookarounds",
-        description: "Learn about lookaheads and lookbehinds.",
+        title: "Groups & Lookarounds",
+        description: "Learn how to use capturing groups, lookaheads, and lookbehinds.",
         problems: [
-            { text: "Find words ending in 'ing': running, walking", solution: /\b\w+(?=ing)\b/g },
-            { text: "Match numbers only if preceded by '$'", solution: /(?<=\$)\d+/g },
-            { text: "Find 'foo' only if NOT preceded by 'bar'", solution: /(?<!bar)foo/g },
-            { text: "Extract numbers only if followed by 'kg'", solution: /\d+(?=kg)/g },
-            { text: "Capture words that are NOT 'apple'", solution: /(?!apple)\b\w+\b/g },
-            { text: "Find letters only if followed by digits: A1, B2", solution: /[A-Za-z](?=\d)/g },
-            { text: "Match 'hello' unless followed by 'world'", solution: /hello(?! world)/g },
-            { text: "Extract phone area codes: (555) 123-4567", solution: /(?<=\()\d{3}(?=\))/g },
-            { text: "Find words only at start of line", solution: /^\w+/gm },
-            { text: "Extract domain from email: user@example.com", solution: /(?<=@)\w+\.\w+/g }
+            { text: "Extract area codes: (123) 456-7890", solution: /\(\d{3}\)/ },
+            { text: "Find repeated words: go go go", solution: /(\b\w+\b) \1/g },
+            { text: "Find numbers not followed by a letter", solution: /\d+(?![a-zA-Z])/g },
+            { text: "Capture words before 'is': This is fun", solution: /(\w+) is/g },
+            { text: "Lookaheads: match dollar amounts: $500", solution: /(?<=\$)\d+/g },
+            { text: "Lookbehinds: capture price values: $99.99", solution: /(?<=\$)\d+\.\d{2}/ },
+            { text: "Match emails without capturing domain", solution: /\w+(?=@)/g },
+            { text: "Capture words only when followed by 'ly'", solution: /\w+(?=ly)/g },
+            { text: "Find text inside brackets [example]", solution: /\[.*?\]/g },
+            { text: "Find words not preceded by 'not'", solution: /(?<!not )\b\w+\b/g }
         ]
     },
     6: {
@@ -93,3 +93,23 @@ const chapters = {
         ]
     }
 };
+
+let currentChapter = null;
+let currentProblemIndex = 0;
+
+function loadChapter(chapterNumber) {
+    currentChapter = chapters[chapterNumber];
+    currentProblemIndex = 0;
+    document.getElementById("chapter-title").textContent = "Chapter " + chapterNumber + ": " + currentChapter.title;
+    document.getElementById("chapter-description").textContent = currentChapter.description;
+    loadProblem();
+}
+
+function loadProblem() {
+    if (!currentChapter) return;
+    const problem = currentChapter.problems[currentProblemIndex];
+    document.getElementById("display-text").textContent = problem.text;
+    document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
+    document.getElementById("regex-input").value = "";
+    document.getElementById("success-message").style.display = "none";
+}
