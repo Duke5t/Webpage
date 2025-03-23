@@ -3,35 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Regex Tutor</title>
+    <title>Regex Tutor</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1 id="main-title">Regex Tutor</h1>
-    
-    <div id="menu">
-        <h2>Chapters</h2>
-        <ul>
-            <li onclick="loadChapter(1)">Chapter 1: Basics</li>
-            <li onclick="loadChapter(2)">Chapter 2: Character Classes</li>
-            <li onclick="loadChapter(3)">Chapter 3: Quantifiers</li>
-            <li onclick="loadChapter(4)">Chapter 4: Anchors & Boundaries</li>
-            <li onclick="loadChapter(5)">Chapter 5: Groups & Lookarounds</li>
-            <li onclick="loadChapter(6)">Chapter 6: Advanced Patterns</li>
-        </ul>
+    <h1 class="title">Regex Tutor</h1>
+    <div class="container">
+        <div class="menu">
+            <h2>Chapters</h2>
+            <ul id="chapter-list"></ul>
+        </div>
+        <div class="dialogue">
+            <h2 id="chapter-title">Chapter Title</h2>
+            <p id="chapter-description">Chapter description goes here.</p>
+            <p id="problem-description">Problem description here.</p>
+            <div class="problem-text-container">
+                <p id="problem-text">Text to interact with</p>
+            </div>
+        </div>
+        <div class="interactive">
+            <p>Enter your regex below:</p>
+            <input type="text" id="regex-input" placeholder="Enter regex here">
+            <button id="next-problem-btn" style="display: none;">Correct! Move to the next problem.</button>
+            <p id="expected-answer"></p>
+        </div>
     </div>
-
-    <div id="dialogue-box">
-        <h2 id="chapter-title">Welcome</h2>
-        <p id="chapter-description">Select a chapter to begin learning Regex!</p>
-        <p id="problem-description"></p>
-    </div>
-
-    <div id="interactive-area">
-        <p id="display-text">Click a chapter to begin.</p>
-        <input type="text" id="regex-input" placeholder="Enter regex here..." oninput="updateHighlighting()">
-        <p id="success-message" style="display:none; color: green;">Correct! Move to the next problem.</p>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
