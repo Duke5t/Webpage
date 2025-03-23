@@ -48,84 +48,68 @@ const chapters = {
         ]
     },
     4: {
-        title: "Advanced Applications",
-        description: "More complex regex problems to test your skills.",
+        title: "Anchors & Boundaries",
+        description: "Learn how to use start (^), end ($), and word boundaries (\b).",
         problems: [
-            { text: "Contact us at support@example.com or admin@site.org.", solution: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b/g },
-            { text: "<a href=\"https://example.com\">Click here</a>", solution: /href=\"(.*?)\"/g },
-            { text: "She said, \"Hello world\" with excitement.", solution: /".*?"/g },
-            { text: "MySecureP@ssword1!", solution: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ },
-            { text: "The values are 1,200, 3,450, and 78,900.", solution: /\d{1,3}(,\d{3})*/g },
-            { text: "Visit https://www.google.com or http://example.org", solution: /https?:\/\/(www\.)?([\w-]+\.\w+)/g },
-            { text: "London and Paris are beautiful cities.", solution: /\b[A-Z][a-z]*\b/g },
-            { text: "userName, total_price, getData", solution: /\b[a-z]+(?:[A-Z][a-z]*|_[a-z]+)*\b/g },
-            { text: "192.168.1.1 is a valid IP.", solution: /\b(?:\d{1,3}\.){3}\d{1,3}\b/ },
-            { text: "Rhythm myths crypts", solution: /\b\w*[aeiouAEIOU]\w*\b/g }
+            { text: "Start and end markers", solution: /^Start|End$/ },
+            { text: "Find words that start with T", solution: /\bT\w+/g },
+            { text: "Capture numbers at the end: Order #1234", solution: /\d+$/ },
+            { text: "Find lines starting with Hello", solution: /^Hello/gm },
+            { text: "Match entire sentence", solution: /^.*$/ },
+            { text: "Extract words alone: dog, cat, fish", solution: /\b\w+\b/g },
+            { text: "Find question sentences?", solution: /^.*\?$/ },
+            { text: "Match digits at the start: 123abc", solution: /^\d+/ },
+            { text: "Capture words ending with 'ing'", solution: /\b\w+ing\b/g },
+            { text: "Find hashtags: #regex", solution: /#\w+/g }
+        ]
+    },
+    5: {
+        title: "Groups & Lookarounds",
+        description: "Learn how to use capturing groups, lookaheads, and lookbehinds.",
+        problems: [
+            { text: "Extract area codes: (123) 456-7890", solution: /\(\d{3}\)/ },
+            { text: "Find repeated words: go go go", solution: /(\b\w+\b) \1/g },
+            { text: "Find numbers not followed by a letter", solution: /\d+(?![a-zA-Z])/g },
+            { text: "Capture words before 'is': This is fun", solution: /(\w+) is/g },
+            { text: "Lookaheads: match dollar amounts: $500", solution: /(?<=\$)\d+/g },
+            { text: "Lookbehinds: capture price values: $99.99", solution: /(?<=\$)\d+\.\d{2}/ },
+            { text: "Match emails without capturing domain", solution: /\w+(?=@)/g },
+            { text: "Capture words only when followed by 'ly'", solution: /\w+(?=ly)/g },
+            { text: "Find text inside brackets [example]", solution: /\[.*?\]/g },
+            { text: "Find words not preceded by 'not'", solution: /(?<!not )\b\w+\b/g }
+        ]
+    },
+    6: {
+        title: "Regex Challenges",
+        description: "Tackle difficult regex challenges!",
+        problems: [
+            { text: "Extract all hashtags: #fun #regex", solution: /#\w+/g },
+            { text: "Match dates in YYYY-MM-DD format", solution: /\d{4}-\d{2}-\d{2}/g },
+            { text: "Find valid hex color codes: #FFA07A", solution: /#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/g },
+            { text: "Extract quoted strings: \"Hello\" and 'World'", solution: /['\"](.*?)['\"]/g },
+            { text: "Find valid IPv6 addresses", solution: /([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}/g },
+            { text: "Extract time from '14:30:59'", solution: /\b\d{2}:\d{2}:\d{2}\b/g },
+            { text: "Match URLs starting with http:// or https://", solution: /https?:\/\/[\w.-]+/g }
         ]
     }
 };
 
-// Reference to the relevant DOM elements
-const chapterSelect = document.getElementById('chapterSelect');
-const problemContainer = document.getElementById('problemContainer');
-const regexInput = document.getElementById('regexInput');
-const regexFeedback = document.getElementById('regexFeedback');
-const expectedAnswer = document.getElementById('expectedAnswer');
-const nextProblemButton = document.getElementById('nextProblemButton');
-let currentChapterIndex = 1;
+let currentChapter = null;
 let currentProblemIndex = 0;
 
-function loadProblem(chapterIndex, problemIndex) {
-    const chapter = chapters[chapterIndex];
-    const problem = chapter.problems[problemIndex];
-
-    // Clear previous feedback and input
-    regexFeedback.textContent = '';
-    expectedAnswer.textContent = '';
-    regexInput.value = '';
-    nextProblemButton.style.display = 'none';
-
-    // Highlight the portion of the text that needs to be matched
-    const highlightedText = problem.text.replace(problem.solution, `<span class="highlight">${problem.solution.source}</span>`);
-    problemContainer.innerHTML = `
-        <p>Match only the highlighted part of the string below:</p>
-        <p>${highlightedText}</p>
-    `;
-
-    // Set expected solution
-    expectedAnswer.textContent = `Expected answer: ${problem.solution.source}`;
-
-    regexInput.focus();
-}
-
-function checkAnswer() {
-    const chapter = chapters[currentChapterIndex];
-    const problem = chapter.problems[currentProblemIndex];
-    const userRegex = new RegExp(regexInput.value);
-
-    if (userRegex.test(problem.text)) {
-        regexFeedback.textContent = 'Correct!';
-        nextProblemButton.style.display = 'inline-block';
-    } else {
-        regexFeedback.textContent = 'Incorrect, try again.';
-    }
-}
-
-// Move to the next problem
-nextProblemButton.addEventListener('click', () => {
-    currentProblemIndex++;
-    if (currentProblemIndex >= chapters[currentChapterIndex].problems.length) {
-        currentProblemIndex = 0; // Reset to the first problem in the chapter
-    }
-    loadProblem(currentChapterIndex, currentProblemIndex);
-});
-
-// Load the initial problem when the page loads
-chapterSelect.addEventListener('change', () => {
-    currentChapterIndex = parseInt(chapterSelect.value, 10);
+function loadChapter(chapterNumber) {
+    currentChapter = chapters[chapterNumber];
     currentProblemIndex = 0;
-    loadProblem(currentChapterIndex, currentProblemIndex);
-});
+    document.getElementById("chapter-title").textContent = "Chapter " + chapterNumber + ": " + currentChapter.title;
+    document.getElementById("chapter-description").textContent = currentChapter.description;
+    loadProblem();
+}
 
-// Initially load the first problem from Chapter 1
-loadProblem(currentChapterIndex, currentProblemIndex);
+function loadProblem() {
+    if (!currentChapter) return;
+    const problem = currentChapter.problems[currentProblemIndex];
+    document.getElementById("display-text").textContent = problem.text;
+    document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
+    document.getElementById("regex-input").value = "";
+    document.getElementById("success-message").style.display = "none";
+}
