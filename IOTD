@@ -71,7 +71,7 @@
     <script>
         const integrals = [
             "\\int x^n dx",
-            "\\int \\frac{\\sqrt{x}}{x^2+1}
+            "\\int \\frac{\\sqrt{x}}{x^2+1}",
             "\\int e^{ax} dx",
             "\\int \\tan x dx",
             "\\int x e^x dx",
