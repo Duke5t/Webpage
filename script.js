@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Attach click listeners to chapter buttons dynamically
+    document.querySelectorAll("#menu li").forEach((li, index) => {
+        li.addEventListener("click", () => loadChapter(index + 1));
+    });
+
+    // Add event listener for success button (created dynamically later)
+    document.body.addEventListener("click", function (event) {
+        if (event.target.id === "next-problem-btn") {
+            nextProblem();
+        }
+    });
+});
+
 const chapters = {
     1: {
         title: "Basics",
