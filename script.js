@@ -98,12 +98,21 @@ let currentChapter = null;
 let currentProblemIndex = 0;
 
 function loadChapter(chapterNumber) {
+    console.log("Loading chapter:", chapterNumber);
+    console.log("Chapter object:", chapters[chapterNumber]);
+
+    if (!chapters[chapterNumber]) {
+        console.error("Error: Chapter " + chapterNumber + " does not exist.");
+        return;
+    }
+
     currentChapter = chapters[chapterNumber];
     currentProblemIndex = 0;
     document.getElementById("chapter-title").textContent = "Chapter " + chapterNumber + ": " + currentChapter.title;
     document.getElementById("chapter-description").textContent = currentChapter.description;
     loadProblem();
 }
+
 
 function loadProblem() {
     if (!currentChapter) return;
