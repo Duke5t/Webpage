@@ -6,6 +6,26 @@ body {
     text-align: center;
 }
 
+button {
+    background: #99BC85;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #7A9E70;
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
 #main-title {
     font-size: 2.5em;
     color: #99BC85;
@@ -54,3 +74,4 @@ body {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
+
