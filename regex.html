@@ -32,6 +32,10 @@
         <p id="display-text">Click a chapter to begin.</p>
         <input type="text" id="regex-input" placeholder="Enter regex here..." oninput="updateHighlighting()">
         <p id="success-message" style="display:none; color: green;">Correct! Move to the next problem.</p>
+        <button onclick="previousProblem()">Previous</button>
+        <button onclick="nextProblem()">Next</button>
+        <button onclick="showHint()">Hint</button>
+        <label><input type="checkbox" onchange="toggleCaseSensitivity()"> Case Sensitive</label>
     </div>
 </body>
 </html>
