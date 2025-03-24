@@ -45,16 +45,6 @@ const chapters = {
             { text: "Find words with at least 5 letters", solution: /\b\w{5,}\b/g },
             { text: "Numbers: 5, 55, 555", solution: /5{2,}/g },
             { text: "Capture at least two vowels together", solution: /[aeiou]{2,}/g }
-            // { text: "ha ha ha ha", solution: /(ha)+/g },
-            // { text: "Hellooooo there!", solution: /o+/g },
-            // { text: "Numbers: 1000, 20000, 300000", solution: /\d{3,}/g },
-            // { text: "Find optional s in color/colour", solution: /colou?r/ },
-            // { text: "Capture repeating words: go go go!", solution: /(go\s?)+/ },
-            // { text: "Find all double letters: look, feel, balloon", solution: /(\w)\1/g },
-            // { text: "Match 'abc' repeated 3 times: abcabcabc", solution: /(abc){3}/ },
-            // { text: "Find words with at least 5 letters", solution: /\b\w{5,}\b/g },
-            // { text: "Numbers: 5, 55, 555", solution: /5{2,}/g },
-            // { text: "Capture at least two vowels together", solution: /[aeiou]{2,}/g }
         ]
     },
     4: {
@@ -123,6 +113,7 @@ function loadProblem() {
     document.getElementById("display-text").innerHTML = problem.text;
     document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
     document.getElementById("regex-input").value = "";
+    document.getElementById("regex-input").style.backgroundColor = "white";
     document.getElementById("success-message").style.display = "none";
     highlightMatches();
 }
@@ -138,13 +129,14 @@ function highlightMatches() {
     const inputRegex = document.getElementById("regex-input").value;
     if (!inputRegex) {
         document.getElementById("display-text").innerHTML = problem.text;
+        document.getElementById("regex-input").style.backgroundColor = "white";
         return;
     }
     
     try {
         const flags = caseSensitive ? "g" : "gi";
         const regex = new RegExp(inputRegex, flags);
-        const highlightedText = problem.text.replace(regex, match => `<span style='background:yellow;'>${match}</span>`);
+        const highlightedText = problem.text.replace(regex, match => `<span style='background:yellow; border-radius: 5px;'>${match}</span>`);
         document.getElementById("display-text").innerHTML = highlightedText;
         checkSolution(regex);
     } catch (e) {
@@ -158,8 +150,10 @@ function checkSolution(userRegex) {
     
     if (userRegex.toString() === correctRegex.toString()) {
         document.getElementById("success-message").style.display = "block";
+        document.getElementById("regex-input").style.backgroundColor = "#99BC85";
     } else {
         document.getElementById("success-message").style.display = "none";
+        document.getElementById("regex-input").style.backgroundColor = "white";
     }
 }
 
@@ -189,9 +183,9 @@ function previousProblem() {
 document.addEventListener("DOMContentLoaded", () => {
     const interactiveArea = document.getElementById("interactive-area");
     interactiveArea.insertAdjacentHTML("beforeend", `
-        <button onclick="previousProblem()">Previous</button>
-        <button onclick="nextProblem()">Next</button>
-        <button onclick="showHint()">Hint</button>
+        <button class="styled-button" onclick="previousProblem()">Previous</button>
+        <button class="styled-button" onclick="nextProblem()">Next</button>
+        <button class="styled-button" onclick="showHint()">Hint</button>
         <label><input type="checkbox" onchange="toggleCaseSensitivity()"> Case Sensitive</label>
     `);
 });
