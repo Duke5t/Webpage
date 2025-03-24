@@ -29,23 +29,23 @@ const chapters = {
             { text: "The quick brown fox jumps over the lazy dog.", solution: /fox/ }
         ]
     },
+    // 2: {
+    //     title: "Character Classes",
+    //     description: "Learn about digit, word, and whitespace classes.",
+    //     problems: [
+    //         { text: "The number is 12345.", solution: /\d+/ },
+    //         { text: "Find words in this sentence.", solution: /\w+/g },
+    //         { text: "Spaces between words are important.", solution: /\s+/g },
+    //         { text: "123 Main St.", solution: /\d+/ },
+    //         { text: "Email me at hello@example.com", solution: /\w+@\w+\.\w+/ },
+    //         { text: "Mix of letters and numbers: A1B2C3", solution: /\w+/g },
+    //         { text: "Tab\tSeparated", solution: /\t/ },
+    //         { text: "Capture all lowercase letters a-z", solution: /[a-z]+/g },
+    //         { text: "Find capital letters A-Z", solution: /[A-Z]+/g },
+    //         { text: "Extract special characters from *&^%$#@!", solution: /[^a-zA-Z0-9]/g }
+    //     ]
+    // },
     2: {
-        title: "Character Classes",
-        description: "Learn about digit, word, and whitespace classes.",
-        problems: [
-            { text: "The number is 12345.", solution: /\d+/ },
-            { text: "Find words in this sentence.", solution: /\w+/g },
-            { text: "Spaces between words are important.", solution: /\s+/g },
-            { text: "123 Main St.", solution: /\d+/ },
-            { text: "Email me at hello@example.com", solution: /\w+@\w+\.\w+/ },
-            { text: "Mix of letters and numbers: A1B2C3", solution: /\w+/g },
-            { text: "Tab\tSeparated", solution: /\t/ },
-            { text: "Capture all lowercase letters a-z", solution: /[a-z]+/g },
-            { text: "Find capital letters A-Z", solution: /[A-Z]+/g },
-            { text: "Extract special characters from *&^%$#@!", solution: /[^a-zA-Z0-9]/g }
-        ]
-    },
-    3: {
         title: "Quantifiers",
         description: "Learn how to match multiple occurrences of characters.",
         problems: [
