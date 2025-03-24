@@ -113,12 +113,52 @@ function loadChapter(chapterNumber) {
     loadProblem();
 }
 
-
 function loadProblem() {
     if (!currentChapter) return;
+    
     const problem = currentChapter.problems[currentProblemIndex];
-    document.getElementById("display-text").textContent = problem.text;
-    document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
+    const displayTextElem = document.getElementById("display-text");
+    const problemDescriptionElem = document.getElementById("problem-description");
+    
+    // Highlight the matched portion
+    const regex = problem.solution;
+    const highlightedText = problem.text.replace(regex, match => `<mark>${match}</mark>`);
+    
+    problemDescriptionElem.innerHTML = `Match only: <strong>${regex}</strong>`;
+    displayTextElem.innerHTML = highlightedText;
+    
     document.getElementById("regex-input").value = "";
     document.getElementById("success-message").style.display = "none";
+    document.getElementById("expected-answer").style.display = "none";
+}
+
+
+function checkAnswer() {
+    if (!currentChapter) return;
+    
+    const problem = currentChapter.problems[currentProblemIndex];
+    const userInput = document.getElementById("regex-input").value;
+    const regex = problem.solution;
+    const testString = problem.text;
+    const expectedAnswerElem = document.getElementById("expected-answer");
+    
+    try {
+        const userRegex = new RegExp(userInput);
+        if (userRegex.test(testString) && userRegex.toString() === regex.toString()) {
+            document.getElementById("success-message").style.display = "block";
+            expectedAnswerElem.textContent = `Expected answer: ${regex}`;
+            expectedAnswerElem.style.display = "block";
+        } else {
+            document.getElementById("success-message").style.display = "none";
+            expectedAnswerElem.style.display = "none";
+        }
+    } catch (error) {
+        console.error("Invalid regex input:", error);
+    }
+}
+
+function nextProblem() {
+    if (!currentChapter || currentProblemIndex >= currentChapter.problems.length - 1) return;
+    currentProblemIndex++;
+    loadProblem();
 }
