@@ -20,15 +20,15 @@ const chapters = {
         description: "Learn about digit, word, and whitespace classes.",
         problems: [
             { text: "The number is 12345.", solution: /\d+/ },
-            { text: "Find words in this sentence.", solution: /\w+/g },
-            { text: "Spaces between words are important.", solution: /\s+/g },
+            { text: "Find words in this sentence.", solution: /\w+/ },
+            { text: "Spaces between words are important.", solution: /\s+/ },
             { text: "123 Main St.", solution: /\d+/ },
             { text: "Email me at hello@example.com", solution: /\w+@\w+\.\w+/ },
-            { text: "Mix of letters and numbers: A1B2C3", solution: /\w+/g },
+            { text: "Mix of letters and numbers: A1B2C3", solution: /\w+/ },
             { text: "Tab\tSeparated", solution: /\t/ },
-            { text: "Capture all lowercase letters a-z", solution: /[a-z]+/g },
-            { text: "Find capital letters A-Z", solution: /[A-Z]+/g },
-            { text: "Extract special characters from *&^%$#@!", solution: /[^a-zA-Z0-9]/g }
+            { text: "Capture all lowercase letters a-z", solution: /[a-z]+/ },
+            { text: "Find capital letters A-Z", solution: /[A-Z]+/ },
+            { text: "Extract special characters from *&^%$#@!", solution: /[^a-zA-Z0-9]/ }
         ]
     },
     3: {
@@ -45,6 +45,16 @@ const chapters = {
             { text: "Find words with at least 5 letters", solution: /\b\w{5,}\b/g },
             { text: "Numbers: 5, 55, 555", solution: /5{2,}/g },
             { text: "Capture at least two vowels together", solution: /[aeiou]{2,}/g }
+            // { text: "ha ha ha ha", solution: /(ha)+/g },
+            // { text: "Hellooooo there!", solution: /o+/g },
+            // { text: "Numbers: 1000, 20000, 300000", solution: /\d{3,}/g },
+            // { text: "Find optional s in color/colour", solution: /colou?r/ },
+            // { text: "Capture repeating words: go go go!", solution: /(go\s?)+/ },
+            // { text: "Find all double letters: look, feel, balloon", solution: /(\w)\1/g },
+            // { text: "Match 'abc' repeated 3 times: abcabcabc", solution: /(abc){3}/ },
+            // { text: "Find words with at least 5 letters", solution: /\b\w{5,}\b/g },
+            // { text: "Numbers: 5, 55, 555", solution: /5{2,}/g },
+            // { text: "Capture at least two vowels together", solution: /[aeiou]{2,}/g }
         ]
     },
     4: {
@@ -96,16 +106,10 @@ const chapters = {
 
 let currentChapter = null;
 let currentProblemIndex = 0;
+let caseSensitive = true;
 
 function loadChapter(chapterNumber) {
-    console.log("Loading chapter:", chapterNumber);
-    console.log("Chapter object:", chapters[chapterNumber]);
-
-    if (!chapters[chapterNumber]) {
-        console.error("Error: Chapter " + chapterNumber + " does not exist.");
-        return;
-    }
-
+    if (!chapters[chapterNumber]) return;
     currentChapter = chapters[chapterNumber];
     currentProblemIndex = 0;
     document.getElementById("chapter-title").textContent = "Chapter " + chapterNumber + ": " + currentChapter.title;
@@ -115,50 +119,79 @@ function loadChapter(chapterNumber) {
 
 function loadProblem() {
     if (!currentChapter) return;
-    
     const problem = currentChapter.problems[currentProblemIndex];
-    const displayTextElem = document.getElementById("display-text");
-    const problemDescriptionElem = document.getElementById("problem-description");
-    
-    // Highlight the matched portion
-    const regex = problem.solution;
-    const highlightedText = problem.text.replace(regex, match => `<mark>${match}</mark>`);
-    
-    problemDescriptionElem.innerHTML = `Match only: <strong>${regex}</strong>`;
-    displayTextElem.innerHTML = highlightedText;
-    
+    document.getElementById("display-text").innerHTML = problem.text;
+    document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
     document.getElementById("regex-input").value = "";
     document.getElementById("success-message").style.display = "none";
-    document.getElementById("expected-answer").style.display = "none";
+    highlightMatches();
 }
 
+function updateHighlighting() {
+    highlightMatches();
+}
 
-function checkAnswer() {
-    if (!currentChapter) return;
+function highlightMatches() {
+    const problem = currentChapter?.problems[currentProblemIndex];
+    if (!problem) return;
     
-    const problem = currentChapter.problems[currentProblemIndex];
-    const userInput = document.getElementById("regex-input").value;
-    const regex = problem.solution;
-    const testString = problem.text;
-    const expectedAnswerElem = document.getElementById("expected-answer");
+    const inputRegex = document.getElementById("regex-input").value;
+    if (!inputRegex) {
+        document.getElementById("display-text").innerHTML = problem.text;
+        return;
+    }
     
     try {
-        const userRegex = new RegExp(userInput);
-        if (userRegex.test(testString) && userRegex.toString() === regex.toString()) {
-            document.getElementById("success-message").style.display = "block";
-            expectedAnswerElem.textContent = `Expected answer: ${regex}`;
-            expectedAnswerElem.style.display = "block";
-        } else {
-            document.getElementById("success-message").style.display = "none";
-            expectedAnswerElem.style.display = "none";
-        }
-    } catch (error) {
-        console.error("Invalid regex input:", error);
+        const flags = caseSensitive ? "g" : "gi";
+        const regex = new RegExp(inputRegex, flags);
+        const highlightedText = problem.text.replace(regex, match => `<span style='background:yellow;'>${match}</span>`);
+        document.getElementById("display-text").innerHTML = highlightedText;
+        checkSolution(regex);
+    } catch (e) {
+        console.error("Invalid regex input");
     }
 }
 
-function nextProblem() {
-    if (!currentChapter || currentProblemIndex >= currentChapter.problems.length - 1) return;
-    currentProblemIndex++;
-    loadProblem();
+function checkSolution(userRegex) {
+    const problem = currentChapter.problems[currentProblemIndex];
+    const correctRegex = problem.solution;
+    
+    if (userRegex.toString() === correctRegex.toString()) {
+        document.getElementById("success-message").style.display = "block";
+    } else {
+        document.getElementById("success-message").style.display = "none";
+    }
 }
+
+function toggleCaseSensitivity() {
+    caseSensitive = !caseSensitive;
+    highlightMatches();
+}
+
+function showHint() {
+    alert("Hint: Try looking for the key word or pattern mentioned in the sentence.");
+}
+
+function nextProblem() {
+    if (currentProblemIndex < currentChapter.problems.length - 1) {
+        currentProblemIndex++;
+        loadProblem();
+    }
+}
+
+function previousProblem() {
+    if (currentProblemIndex > 0) {
+        currentProblemIndex--;
+        loadProblem();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const interactiveArea = document.getElementById("interactive-area");
+    interactiveArea.insertAdjacentHTML("beforeend", `
+        <button onclick="previousProblem()">Previous</button>
+        <button onclick="nextProblem()">Next</button>
+        <button onclick="showHint()">Hint</button>
+        <label><input type="checkbox" onchange="toggleCaseSensitivity()"> Case Sensitive</label>
+    `);
+});
