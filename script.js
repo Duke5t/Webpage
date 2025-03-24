@@ -1,17 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Attach click listeners to chapter buttons dynamically
-    document.querySelectorAll("#menu li").forEach((li, index) => {
-        li.addEventListener("click", () => loadChapter(index + 1));
-    });
-
-    // Add event listener for success button (created dynamically later)
-    document.body.addEventListener("click", function (event) {
-        if (event.target.id === "next-problem-btn") {
-            nextProblem();
-        }
-    });
-});
-
 const chapters = {
     1: {
         title: "Basics",
@@ -108,20 +94,13 @@ const chapters = {
     }
 };
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Add click event listeners for chapter buttons
-    document.querySelectorAll("#menu li").forEach((item, index) => {
-        item.addEventListener("click", () => loadChapter(index + 1));
-    });
-});
-
 let currentChapter = null;
 let currentProblemIndex = 0;
 
 function loadChapter(chapterNumber) {
     console.log("Loading chapter:", chapterNumber);
+    console.log("Chapter object:", chapters[chapterNumber]);
+
     if (!chapters[chapterNumber]) {
         console.error("Error: Chapter " + chapterNumber + " does not exist.");
         return;
@@ -129,56 +108,17 @@ function loadChapter(chapterNumber) {
 
     currentChapter = chapters[chapterNumber];
     currentProblemIndex = 0;
-    document.getElementById("chapter-title").textContent = `Chapter ${chapterNumber}: ${currentChapter.title}`;
+    document.getElementById("chapter-title").textContent = "Chapter " + chapterNumber + ": " + currentChapter.title;
     document.getElementById("chapter-description").textContent = currentChapter.description;
     loadProblem();
 }
 
+
 function loadProblem() {
     if (!currentChapter) return;
-    
     const problem = currentChapter.problems[currentProblemIndex];
-    const displayTextElem = document.getElementById("display-text");
-    const problemDescriptionElem = document.getElementById("problem-description");
-    
-    // Highlight the matched portion
-    const regex = problem.solution;
-    const highlightedText = problem.text.replace(regex, match => `<mark>${match}</mark>`);
-    
-    problemDescriptionElem.innerHTML = `Match only: <strong>${regex}</strong>`;
-    displayTextElem.innerHTML = highlightedText;
-    
+    document.getElementById("display-text").textContent = problem.text;
+    document.getElementById("problem-description").textContent = "Match the required pattern in the text above.";
     document.getElementById("regex-input").value = "";
     document.getElementById("success-message").style.display = "none";
-    document.getElementById("expected-answer").style.display = "none";
-}
-
-function checkAnswer() {
-    if (!currentChapter) return;
-    
-    const problem = currentChapter.problems[currentProblemIndex];
-    const userInput = document.getElementById("regex-input").value;
-    const regex = problem.solution;
-    const testString = problem.text;
-    const expectedAnswerElem = document.getElementById("expected-answer");
-    
-    try {
-        const userRegex = new RegExp(userInput);
-        if (userRegex.test(testString) && userRegex.toString() === regex.toString()) {
-            document.getElementById("success-message").style.display = "block";
-            expectedAnswerElem.textContent = `Expected answer: ${regex}`;
-            expectedAnswerElem.style.display = "block";
-        } else {
-            document.getElementById("success-message").style.display = "none";
-            expectedAnswerElem.style.display = "none";
-        }
-    } catch (error) {
-        console.error("Invalid regex input:", error);
-    }
-}
-
-function nextProblem() {
-    if (!currentChapter || currentProblemIndex >= currentChapter.problems.length - 1) return;
-    currentProblemIndex++;
-    loadProblem();
 }
