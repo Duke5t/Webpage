@@ -1,29 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 body {
     font-family: 'Patrick Hand', cursive;
     background-color: #FAF1E6;
     margin: 0;
     padding: 0;
     text-align: center;
-}
-
-button {
-    background: #99BC85;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-button:hover {
-    background: #7A9E70;
-}
-
-input[type="checkbox"] {
-    margin-left: 10px;
-    transform: scale(1.2);
 }
 
 #main-title {
@@ -54,6 +36,7 @@ input[type="checkbox"] {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 #menu li:hover {
@@ -70,8 +53,85 @@ input[type="checkbox"] {
     margin-top: 10px;
 }
 
+#regex-input.correct {
+    background-color: #99BC85;
+    color: white;
+    transition: background 0.3s ease;
+}
+
 #display-text {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
+span.highlight {
+    background: yellow;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.button-container {
+    margin-top: 15px;
+}
+
+.styled-button {
+    background-color: #99BC85;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.styled-button:hover {
+    background-color: #7A9F63;
+}
+
+.toggle-switch {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: #99BC85;
+}
+
+.toggle-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider:before {
+    transform: translateX(24px);
+}
