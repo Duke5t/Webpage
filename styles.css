@@ -55,7 +55,7 @@ body {
 
 #regex-input.correct {
     background-color: #99BC85;
-    color: white;
+    color: green;
     transition: background 0.3s ease;
 }
 
