@@ -8,3 +8,15 @@ Features to add in 2.8 include:
 -dropdown menu navigation for mobile
 -breakout page for staff bios
 -labels for instrument buttons
+
+
+I've added some practice pages and Files
+
+Integral of the Day :
+IOTD.html
+
+Regex : 
+regex.html
+script.js
+styles.css
+
