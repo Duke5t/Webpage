@@ -147,15 +147,17 @@ function highlightMatches() {
 function checkSolution(userRegex) {
     const problem = currentChapter.problems[currentProblemIndex];
     const correctRegex = problem.solution;
-    
-    if (userRegex.toString() === correctRegex.toString()) {
+    const displayText = document.getElementById("display-text").textContent;
+
+    if (correctRegex.test(displayText) && userRegex.test(displayText)) {
         document.getElementById("success-message").style.display = "block";
-        document.getElementById("regex-input").style.backgroundColor = "#99BC85";
+        document.getElementById("regex-input").style.backgroundColor = "#99BC85"; // ✅ Green background
     } else {
         document.getElementById("success-message").style.display = "none";
-        document.getElementById("regex-input").style.backgroundColor = "white";
+        document.getElementById("regex-input").style.backgroundColor = "white"; // ✅ Reset to white
     }
 }
+
 
 function toggleCaseSensitivity() {
     caseSensitive = !caseSensitive;
@@ -210,8 +212,10 @@ function previousProblem() {
 }
 
 function getCurrentSolution() {
-    return new RegExp("^correct-pattern$"); // Replace with actual solution
+    if (!currentChapter) return null;
+    return currentChapter.problems[currentProblemIndex].solution;
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
