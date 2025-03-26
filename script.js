@@ -135,14 +135,17 @@ function highlightMatches() {
     
     try {
         const flags = caseSensitive ? "g" : "gi";
-        const regex = new RegExp(inputRegex, flags);
-        const highlightedText = problem.text.replace(regex, match => `<span style='background:yellow; border-radius: 5px;'>${match}</span>`);
+        const userRegex = new RegExp(inputRegex, flags);
+        const highlightedText = problem.text.replace(userRegex, match => `<span style='background:yellow; border-radius: 5px;'>${match}</span>`);
         document.getElementById("display-text").innerHTML = highlightedText;
-        checkSolution(regex);
+        
+        checkSolution(userRegex); // ✅ Ensure this is called correctly
+
     } catch (e) {
         console.error("Invalid regex input");
     }
 }
+
 
 function checkSolution(userRegex) {
     const problem = currentChapter.problems[currentProblemIndex];
