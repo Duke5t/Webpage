@@ -169,21 +169,23 @@ function showHint() {
 function updateHighlighting() {
     let regexInput = document.getElementById("regex-input");
     let successMessage = document.getElementById("success-message");
-    
+    let displayText = document.getElementById("display-text"); // Text to match
+    let solutionRegex = getCurrentSolution(); // Get the correct solution regex
+
     try {
         let userRegex = new RegExp(regexInput.value);
-        let solution = getCurrentSolution(); // Assuming this function returns the expected regex solution
 
-        if (userRegex.source === solution.source) { 
-            regexInput.classList.add("correct"); // Apply green background
+        if (solutionRegex.test(displayText.textContent)) {
+            regexInput.classList.add("correct");  // Turn background green
             successMessage.style.display = "block"; // Show success message
         } else {
-            regexInput.classList.remove("correct"); // Revert to default background
+            regexInput.classList.remove("correct"); // Reset background
             successMessage.style.display = "none"; // Hide success message
         }
     } catch (e) {
-        regexInput.classList.remove("correct"); // Revert to default if regex is invalid
-        successMessage.style.display = "none"; // Hide success message
+        // If regex is invalid, reset styles and hide success message
+        regexInput.classList.remove("correct");
+        successMessage.style.display = "none";
     }
 }
 
