@@ -209,6 +209,11 @@ function previousProblem() {
     }
 }
 
+function getCurrentSolution() {
+    return new RegExp("^correct-pattern$"); // Replace with actual solution
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const interactiveArea = document.getElementById("interactive-area");
     interactiveArea.insertAdjacentHTML("beforeend", `
