@@ -166,12 +166,39 @@ function showHint() {
     alert("Hint: Try looking for the key word or pattern mentioned in the sentence.");
 }
 
-function nextProblem() {
-    if (currentProblemIndex < currentChapter.problems.length - 1) {
-        currentProblemIndex++;
-        loadProblem();
+function updateHighlighting() {
+    let regexInput = document.getElementById("regex-input");
+    let successMessage = document.getElementById("success-message");
+    
+    try {
+        let userRegex = new RegExp(regexInput.value);
+        let solution = getCurrentSolution(); // Assuming this function returns the expected regex solution
+
+        if (userRegex.source === solution.source) { 
+            regexInput.classList.add("correct"); // Apply green background
+            successMessage.style.display = "block"; // Show success message
+        } else {
+            regexInput.classList.remove("correct"); // Revert to default background
+            successMessage.style.display = "none"; // Hide success message
+        }
+    } catch (e) {
+        regexInput.classList.remove("correct"); // Revert to default if regex is invalid
+        successMessage.style.display = "none"; // Hide success message
     }
 }
+
+// Function to hide the success message when moving to the next problem
+function nextProblem() {
+    document.getElementById("success-message").style.display = "none"; 
+    loadNextProblem(); // Assuming this function handles loading the next problem
+}
+
+// function nextProblem() {
+//     if (currentProblemIndex < currentChapter.problems.length - 1) {
+//         currentProblemIndex++;
+//         loadProblem();
+//     }
+// }
 
 function previousProblem() {
     if (currentProblemIndex > 0) {
