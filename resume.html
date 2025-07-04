@@ -1,0 +1,598 @@
+
+<!--  
+  TODO : 
+  Add target for contact button
+  Add meaningful certificate borders/backgrounds in awards/education
+  Add something for the Pool?
+  Add links to github for Projects section
+  Add Experience section
+  Add small moving or flashing components to homepage
+  Add music/soundeffects
+  Beautify Skills 
+  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spencer Brule's Interactive Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --transition-speed: 1.5s;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+        }
+
+        #scene-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("./images/spacestation.png");
+            background-size: cover;
+            background-position: center;
+            transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+            transform-origin: center center;
+        }
+
+        ul {
+            column-count: 2;
+            column-gap: 2rem;
+        }
+        @media screen and (min-width: 768px) {
+            ul {
+                column-count: 3;
+                column-gap: 5rem;
+            }
+        }
+
+        .certificate-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+        .certificate {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            
+            /* Animation setup */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        /* This makes the certificates appear when the page is active */
+        .zoomed .page-content.active .certificate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger the animation for each certificate */
+        .zoomed .page-content.active .certificate:nth-child(1) { transition-delay: 0.2s; }
+        .zoomed .page-content.active .certificate:nth-child(2) { transition-delay: 0.4s; }
+        .zoomed .page-content.active .certificate:nth-child(3) { transition-delay: 0.6s; }
+        .zoomed .page-content.active .certificate:nth-child(4) { transition-delay: 0.8s; }
+
+        .indent {
+            padding-left: 2em; /* Adjust the padding value to your preference */
+        }
+
+        .contact-button {
+            border:2px;
+            display:inline-block;
+            padding:8px 16px;
+            border-radius: 8px;
+            vertical-align:middle;
+            overflow:hidden;
+            text-decoration:none;
+            color:rgba(255, 255, 255, 0.7);
+            background-color:rgb(168, 43, 43);
+            text-align:center;
+            cursor:pointer;
+            white-space:nowrap
+
+            /* ##################INCOMPLETE######################### */
+        }
+        /* MUTE BUTTON */
+        #mute-btn {
+            position: fixed;
+            top: 3%;
+            right: 3%;
+            font-size: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #00ffff88;
+            color: white;
+            z-index: 10;
+            cursor: pointer;
+        }
+        #mute-btn {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            display: block;
+        }
+
+        #mute-btn.visible {
+            opacity: 1;
+        }
+
+        /* TYPEWRITER EFFECT */
+        #console-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            white-space: pre-wrap; /*Ensures line breaks are respected*/
+            text-align: left;
+            max-width: 80%;
+        }
+
+        /* The blinking cursor */
+        #console-text::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { color: transparent; }
+            50% { color: white; }
+        }
+
+        #console-lines {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            text-align: left;
+            width: 100%;
+            max-width: 80%;
+            background-color: rgba(16, 75, 87, 0.404);
+            padding: 1rem;
+            border-radius: 5px;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* This hides the text initially, but keeps the element in the layout */
+        .console-line {
+            margin: 0 0 0.5em 0;
+            visibility: hidden; /* Hide the text until it's typed */
+            white-space: pre-wrap;     
+            overflow-wrap: break-word; 
+            word-break: normal;
+        }
+
+        /* Make the blinking cursor appear at the end of the container */
+        #console-lines::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            visibility: hidden; /* Hidden until the typing starts */
+        }
+
+        /* Example styling for different status messages */
+        .status-green { color: #86efac; } /* Green */
+        .status-blue { color: #67e8f9; } /* Cyan */
+        .status-yellow { color: #fde047; } /* Yellow */
+        .status-red { color: #fd6547; } /* Red */
+
+
+        /* Hotspot styles */
+        .hotspot {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            box-sizing: border-box;
+            backdrop-filter: blur(0px);
+        }
+
+        .hotspot:hover {
+            background-color: rgba(234, 234, 49, 0);
+            border-color: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(2.5px);
+        }
+        
+        .hotspot .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(0,0,0,0.25);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 50%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .hotspot:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip-reverse-rotate {
+            transform: rotate(35deg);
+            transform-origin: top left;
+        }
+
+        /* Hotspot positions */
+        #hotspot-table { top: 68%; left: 58%; width: 38%; height: 25%; }
+        #hotspot-pool { top: 50%; left: 1%; width: 65%; height: 35%; clip-path: polygon(10% 0%, 50% 0%, 100% 100%, 0% 100%); transform: rotate(-35deg);}
+        #hotspot-trophy { top: 30%; left: 40%; width: 15%; height: 26%; }
+        #hotspot-console { top: 43%; left: 78%; width: 22%; height: 22%; }
+        #hotspot-earth { top: 25%; left: 0%; width: 40%; height: 30%; }
+        #hotspot-moon { top: 21%; left: 64%; width: 26%; height: 23%; }
+
+        /* Page content styles */
+        .page-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-speed) ease-in-out, visibility var(--transition-speed) ease-in-out;
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .page-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        .page-content p {
+            font-size: 1.2rem;
+            max-width: 100%;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1rem;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Zoom states */
+        .zoomed #background.zoom-table { transform: scale(2.5) translate(-23%, -25%); }
+        .zoomed #background.zoom-pool { transform: scale(1.8) translate(15%, -15%); }
+        .zoomed #background.zoom-trophy { transform: scale(4.5) translate(2%, 5%); }
+        .zoomed #background.zoom-console { transform: scale(3) translate(-33%, -5%); }
+        .zoomed #background.zoom-earth { transform: scale(2.2) translate(25%, 15%); }
+        .zoomed #background.zoom-moon { transform: scale(3.5) translate(-22%, 13%); }
+
+        .zoomed .hotspot {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .zoomed .page-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .zoomed .back-button {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0.5s;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <audio id="bg-audio" autoplay loop>
+        <source src="./audio/backgroundAudio.wav" type="audio/wav">
+    </audio>
+
+    <button id="mute-btn" style="display:none;">🔊</button>
+
+    <div id="scene-container">
+        <!-- The main background image -->
+        <div id="background"></div>
+
+        <!-- Clickable Hotspots -->
+        <div class="hotspot" id="hotspot-table" data-target="page-table" data-zoom-class="zoom-table"><span class="tooltip">Contact</span></div>
+        <div class="hotspot" id="hotspot-pool" data-target="page-pool" data-zoom-class="zoom-pool"><span class="tooltip tooltip-reverse-rotate">The Pool</span></div>
+        <div class="hotspot" id="hotspot-trophy" data-target="page-trophy" data-zoom-class="zoom-trophy"><span class="tooltip">Credentials</span></div>
+        <div class="hotspot" id="hotspot-console" data-target="page-console" data-zoom-class="zoom-console"><span class="tooltip">Projects</span></div>
+        <div class="hotspot" id="hotspot-earth" data-target="page-earth" data-zoom-class="zoom-earth"><span class="tooltip">Experience</span></div>
+        <div class="hotspot" id="hotspot-moon" data-target="page-moon" data-zoom-class="zoom-moon"><span class="tooltip">Skills</span></div>
+
+        <!-- Page Content Overlays (hidden by default) -->
+        <div class="page-content" id="page-table">
+            <h2>Contact</h2>
+            <h2>spencerbrule@gmail.com</h2>
+            <p>OR</p>
+            <p>Use the link below to send a direct message!</p>
+            <button type="submit" class="contact-button" onclick=>Contact Me</button>
+        </div>
+        <div class="page-content" id="page-pool">
+            <h1>Starlight Infinity Pool</h1>
+            <p>Take a dip in recycled, purified water while floating amongst the stars. The edge seems to drop off into the cosmos itself.</p>
+        </div>
+        <div class="page-content" id="page-trophy">
+            <h1>Credentials and Awards</h1>
+            <div class="certificate-grid">
+                <div class="certificate">
+                    <h2>Education</h2>
+                    <p>Bachelors of Data Science - University of Manitoba</p>
+                </div>
+                <div class="certificate">
+                    <h2>Education</h2>
+                    <p>Bachelors of Music - University of Toronto</p>
+                </div>
+                <div class="certificate">
+                    <h2>Awards</h2>
+                    <p>2nd Canadian Air Division Coin</p>
+                </div>
+                <div class="certificate">
+                    <h2>Awards</h2>
+                    <p>Etc.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content" id="page-console">
+            <h1>Projects</h1>
+            <div id="console-lines">
+                <p class="console-line"><span class="status-green"> > Wildfire Prediction Model [May 2025 - Aug 2025]</span></p> 
+                <p style="text-indent: 20px;" class="console-line"> > Database and Data Mining Lab - University of Manitoba</p>
+                <p style="text-indent: 20px;" class="console-line"> > Details more and more of them so that we eventually see where the text wraps around and can maybe plan breaks or understand how things scale in the long run</p>
+                    
+                <p class="console-line"><span class="status-blue"> > Finance Manager [May 2016 - Aug 2024]</span></p>
+                <p style="text-indent: 20px;" class="console-line"> > Database and Data Mining Lab</p>
+                <p style="text-indent: 20px;" class="console-line"> > University of Manitoba</p>
+                
+                <p class="console-line"><span class="status-yellow"> > PROJECT [DATES]</span></p>
+                <p style="text-indent: 20px;" class="console-line"> > Details of the project</p>
+                <p style="text-indent: 20px;" class="console-line"> > Link to Github repo</p>
+                
+                <p class="console-line"><span class="status-red"> > Another Project [DATES - DATES]</span></p>
+                <p style="text-indent: 20px;" class="console-line"> > Details of the project</p>
+                <p style="text-indent: 20px;" class="console-line"> > Link to Github repo</p>
+            </div>
+        </div>
+        <div class="page-content" id="page-earth">
+            <h1>The Blue Marble</h1>
+            <p>A constant, breathtaking reminder of home. The planet's weather patterns shift in real-time, a beautiful, silent ballet.</p>
+        </div>
+        <div class="page-content" id="page-moon">
+            <h1>Skills</h1>
+            <h2>Languages</h2>
+            <ul>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>R</li>
+                <li>Java</li>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+            <h2>Packages</h2>
+            <ul>
+                <li>Pandas</li>
+                <li>SciKit-Learn</li>
+                <li>Matplotlib</li>
+                <li>Seaborn</li>
+                <li>Numpy</li>
+                <li>BeautifulSoup</li>
+                <li>PyTorch</li>
+                <li>TensorFlow</li>
+                <li>and more!</li>
+            </ul>
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Problem Solving</li>
+                <li>Creativity</li>
+                <li>Strategic Thinking</li>
+                <li>Adaptability</li>
+                <li>Communication and Story Telling</li>
+            </ul>
+        </div>
+        
+        <button class="back-button">← Back to Lounge</button>
+    </div>
+
+    
+
+<script>
+
+    //AUDIO
+    const audio = document.getElementById('bg-audio');
+    const muteBtn = document.getElementById('mute-btn');
+
+    // Start audio after first click
+    document.addEventListener('click', function () {
+      audio.volume = 0.2;
+      audio.muted = false;
+      audio.play()
+        .then(() => {
+          muteBtn.style.display = 'block'; // show mute button once playing
+          muteBtn.textContent = '🔊';
+        })
+        .catch(err => console.error("Playback failed:", err));
+    }, { once: true });
+
+    // Mute/unmute toggle
+    muteBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+    });
+    muteBtn.classList.add('visible');
+
+
+
+    //HOMEPAGE INTERACTIONS
+    document.addEventListener('DOMContentLoaded', () => {
+        const sceneContainer = document.getElementById('scene-container');
+        const background = document.getElementById('background');
+        const hotspots = document.querySelectorAll('.hotspot');
+        const pageContents = document.querySelectorAll('.page-content');
+        const backButton = document.querySelector('.back-button');
+        
+        let typewriterTimeout;
+        // NEW: An array to store the original console HTML
+        let originalConsoleHTML = [];
+
+        // NEW: Storing the console's HTML as soon as the page is ready
+        const consoleLines = document.querySelectorAll('#console-lines .console-line');
+        consoleLines.forEach(line => {
+            originalConsoleHTML.push(line.innerHTML);
+        });
+
+        // --- UPDATED: Typewriter function now reads from the stored array ---
+        function startTypewriter(container) {
+            const lines = container.querySelectorAll('.console-line');
+            let lineIndex = 0;
+            let charIndex = 0;
+
+            // First, clear any previous text from the lines
+            lines.forEach(line => line.innerHTML = '');
+            container.style.setProperty('--after-visibility', 'visible'); // Show cursor
+
+            function type() {
+                if (lineIndex < lines.length) {
+                    const currentLine = lines[lineIndex];
+                    const htmlToType = originalConsoleHTML[lineIndex];
+
+                    // Use a temporary element to get the plain text version for the animation
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = htmlToType;
+                    const textToType = tempDiv.textContent;
+
+                    currentLine.style.visibility = 'visible';
+
+                    if (charIndex < textToType.length) {
+                        // Type out the plain text character by character
+                        currentLine.textContent += textToType.charAt(charIndex);
+                        charIndex++;
+                        typewriterTimeout = setTimeout(type, 10);
+                    } else {
+                        // Once the line is "typed", replace it with the fully formatted HTML
+                        currentLine.innerHTML = htmlToType;
+                        lineIndex++;
+                        charIndex = 0;
+                        typewriterTimeout = setTimeout(type, 200); // Pause before next line
+                    }
+                } else {
+                    container.style.setProperty('--after-visibility', 'hidden'); // Hide cursor at the end
+                }
+            }
+            type();
+        }
+        
+        // --- UPDATED: Reset function is simpler ---
+        function resetConsole() {
+            clearTimeout(typewriterTimeout);
+            const consoleContainer = document.getElementById('console-lines');
+            if (consoleContainer) {
+                const lines = consoleContainer.querySelectorAll('.console-line');
+                lines.forEach(line => {
+                    line.innerHTML = '';
+                    line.style.visibility = 'hidden';
+                });
+                consoleContainer.style.setProperty('--after-visibility', 'hidden');
+            }
+        }
+
+        hotspots.forEach(hotspot => {
+            hotspot.addEventListener('click', () => {
+                const targetPageId = hotspot.dataset.target;
+                const zoomClass = hotspot.dataset.zoomClass;
+                const targetPage = document.getElementById(targetPageId);
+
+                // Reset the console *before* starting a new animation
+                resetConsole();
+
+                sceneContainer.classList.add('zoomed');
+                background.className = 'background';
+                background.classList.add(zoomClass);
+                
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+
+                const transitionSpeed = 1500;
+                setTimeout(() => {
+                    if (targetPageId === 'page-console') {
+                        const consoleContainer = document.getElementById('console-lines');
+                        startTypewriter(consoleContainer);
+                    }
+                }, transitionSpeed / 2);
+            });
+        });
+
+        backButton.addEventListener('click', () => {
+            sceneContainer.classList.remove('zoomed');
+            
+            setTimeout(() => {
+                background.className = 'background';
+            }, 1500);
+
+            pageContents.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            resetConsole();
+        });
+    });
+</script>
+</body>
+</html>
