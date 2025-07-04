@@ -20,3 +20,5 @@ regex.html
 script.js
 styles.css
 
+Resume :
+resume.html
