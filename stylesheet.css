@@ -1225,55 +1225,58 @@ border-color:#e7ffff!important}
    DROPDOWN MENU
    ================================ */
 
+/* Force dropdown button position */
 .dropdown {
-  position: fixed;
-  top: 16px;
-  right: 16px !important; 
-  left: auto !important;  
-  z-index: 2000;
-  text-align: right;    
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  left: auto !important;
+  z-index: 2000 !important;
+  text-align: right !important;
 }
 
-.dropbtn {
-  float: none;
-  display: inline-block;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: black; 
-  cursor: pointer;
+/* Force button styling */
+.dropdown .dropbtn {
+  background: none !important;
+  border: none !important;
+  font-size: 28px !important;
+  color: black !important;
+  cursor: pointer !important;
+  float: none !important;
+  display: inline-block !important;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0; 
-  left: auto;
-  top: 100%;
-  background-color: #edf3f9;
-  min-width: 150px;
-  margin-top: 8px;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+/* Dropdown content aligned to the left of the button */
+.dropdown .dropdown-content {
+  position: absolute !important;
+  right: 0 !important;  
+  left: auto !important;
+  top: 100% !important;
+  display: none !important;
+  background-color: #edf3f9 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25) !important;
 }
 
-.dropdown-content.show {
-  display: block;
+/* Show menu */
+.dropdown .dropdown-content.show {
+  display: block !important;
 }
 
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #111;   
-  text-decoration: none;
-  opacity: 1;          
+/* Links */
+.dropdown .dropdown-content a {
+  display: block !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  color: #111 !important;   
+  text-decoration: none !important;
 }
 
-.dropdown-content a:hover {
-  color: white;
-  border-radius: 8px;
-  background-color: #ed6b64;
+/* Hover */
+.dropdown .dropdown-content a:hover {
+  color: white !important;
+  border-radius: 8px !important;
+  background-color: #ed6b64 !important;
 }
 
 
