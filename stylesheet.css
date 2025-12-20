@@ -1242,6 +1242,7 @@ border-color:#e7ffff!important}
 
 .dropdown-content {
   display: none;
+  position: absolute;
   right: 0;
   top: 100%;
   background-color: #edf3f9;
