@@ -1228,11 +1228,15 @@ border-color:#e7ffff!important}
 .dropdown {
   position: fixed;
   top: 16px;
-  right: 16px;
+  right: 16px !important; 
+  left: auto !important;  
   z-index: 2000;
+  text-align: right;    
 }
 
 .dropbtn {
+  float: none;
+  display: inline-block;
   background: none;
   border: none;
   font-size: 28px;
@@ -1243,7 +1247,8 @@ border-color:#e7ffff!important}
 .dropdown-content {
   display: none;
   position: absolute;
-  right: 0;
+  right: 0; 
+  left: auto;
   top: 100%;
   background-color: #edf3f9;
   min-width: 150px;
