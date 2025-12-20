@@ -1,127 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
   <title>Saxophone Lessons Winnipeg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="icon" href="./images/logo.ico">
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="./images/logo.ico" />
-
-  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZC46H7J"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
+
     gtag('config', 'G-ET3ZC46H7J');
   </script>
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> -->
+  <style>
+    .half img {
+      margin-bottom: -6px;
+      margin-top: 16px;
+      opacity: 0.8;
+      cursor: pointer
+    }
+
+    .half img:hover {
+      opacity: 1
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- Mobile Header -->
-<header class="mobile-header">
-  <img src="./images/MOMENTUM.png" alt="Momentum Music" />
-  <button class="menu-toggle" aria-label="Open menu">☰</button>
-</header>
+  <!-- CLOSED FOR BUSINESS -->
+  <!-- <div id="closure-overlay">
+    <div class="closure-content">
+      <h1>Studio at Capacity</h1>
+      <p>
+        Momentum Music Studio is focused on delivering high-quality instruction to its current students.
+        Enrollment will reopen as space becomes available.
+      </p>
+    </div>
+  </div> -->
 
-<!-- Navigation -->
-<nav class="nav">
-  <a href="#studio">Studio</a>
-  <a href="#services">Services</a>
-  <a href="#packages">Packages</a>
-  <a href="#staff">Staff</a>
-  <a href="#contact" class="cta">Free Consultation</a>
-</nav>
 
-<!-- Main -->
-<main>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Personalized Music Lessons,<br>Tailored To Your Needs.</h1>
-    <p>Exclusive Offer — Get a Free Consultation.</p>
-    <a href="#contact" class="button primary">Book a FREE Consultation</a>
-  </div>
-  <img src="./images/landing.png" alt="Music Studio" />
-</section>
+  <!-- Sidebar/menu -->
+  <nav class="sidebar grad collapse top large" style="z-index:1;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="window_close()" class="button hide-large display-topleft"
+      style="width:100%;font-size:22px">Close Menu</a>
 
-<!-- Studio -->
-<section id="studio" class="section">
-  <h2>Studio</h2>
-  <p>
-    Our mission is to provide a safe, individualized environment where students
-    develop musical skills that last a lifetime.
-  </p>
-</section>
+    <div class="bar-block">
+      <img class="display-topleft" src="./images/MOMENTUM.png" alt="Spencer Brule" style="width:90%">
+      <!-- <img class="display-topleft" src="./images/SBLogo3.png" alt="Spencer Brule" style="width:100%"> -->
+      <h4 class="padding-top-64"></h4>
+      <h4 class="padding-top-64"></h4>
+      <h4 class="padding-top-32"></h4>
+      <a href="#" onclick="window_close()" class="bar-item button hover-palette3-invert">Home</a>
+      <a href="#studio" onclick="window_close()" class="bar-item button hover-palette3-invert">Studio</a>
+      <a href="#services" onclick="window_close()" class="bar-item button hover-palette3-invert">Services</a>
+      <a href="#packages" onclick="window_close()" class="bar-item button hover-palette3-invert">Packages</a>
+      <a href="#staff" onclick="window_close()" class="bar-item button hover-palette3-invert">Staff</a>
+      <a href="#contact" onclick="window_close()" class="bar-item button hover-palette3-invert">Contact</a>
+    </div>
+  </nav>
 
-<!-- Services -->
-<section id="services" class="section alt">
-  <h2>Services</h2>
-  <ul class="features">
-    <li>Structured Curriculum</li>
-    <li>Real-World Instructor Experience</li>
-    <li>Progress Tracking</li>
-    <li>Personalized Feedback</li>
-  </ul>
-</section>
+  <!-- Top menu -->
+  <!-- <header class="container top new-blue xlarge display-top padding-top-16">
+    <div class="new-blue right">
+        <a href="#contact" onclick="window_close()" class="button hover-black">Contact</a>
 
-<!-- Packages -->
-<section id="packages" class="section">
-  <h2>Packages</h2>
-
-  <div class="pricing">
-    <div class="card">
-      <h3>Short Lessons</h3>
-      <p>12 × 30 min lessons</p>
-      <strong>$420</strong>
     </div>
 
-    <div class="card featured">
-      <h3>Advanced Lessons</h3>
-      <p>12 × 1 hour lessons</p>
-      <strong>$720</strong>
+    <span></span>
+</header> -->
+
+  <!-- Top menu on small screens -->
+  <div class="dropdown">
+    <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+      ☰
+    </button>
+
+    <div class="dropdown-content" id="mainDropdown">
+      <a href="#studio">Studio</a>
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#staff">Staff</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
-</section>
 
-<!-- Staff -->
-<section id="staff" class="section alt">
-  <h2>Our Staff</h2>
 
-  <div class="staff">
-    <img src="./images/spencerbrule.JPG" alt="Spencer Brule" />
-    <p>
-      Spencer Brule is a professional saxophonist and educator with over 10 years
-      of experience, having performed internationally and for heads of state.
-    </p>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <!-- <div class="overlay hide-large" onclick="window_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
+
+  <!-- !PAGE CONTENT! -->
+  <div class="main" style="margin-left:290px;margin-right:40px">
+
+    <!-- Header -->
+    <!-- <div class="container opacity" style="margin-top:80px" id="Header"> -->
+    <!-- <h2 class="strong xxxlarge bold"><b><br></b></h2> -->
+    <!-- </div> -->
+
+    <!-- Landing Page -->
+    <div class="container" style="margin-top:75px">
+      <div class="half" style="margin-top:13%">
+        <h1 class="xxxlarge h1-small"><b>Personalized Music Lessons, <br>Tailored To Your Needs.</b></h1>
+        <p class="p-small" style="text-indent: 4px">Exclusive Offer. Get a Free Consultation.</p>
+        <h4 class="padding-top-16"></h4>
+
+        <a href="#contact" onclick="window_close()"
+          class="button round-xxlarge h2-small xlarge opacity palette3 red-invert hover-blue-grey">Book a FREE
+          Consultation</a>
+      </div>
+      <div class="half">
+        <img src="./images/landing.png" alt="Band" style="width:100%">
+      </div>
+    </div>
+
+    <!-- Studio -->
+    <div class="container" id="studio" style="margin-top:75px">
+      <h2 class="xxxlarge palette2"><b>Studio</b></h2>
+      <hr style="margin-left:0px;width:80px;border:1px solid red" class="round">
+      <p>Our mission is to provide a safe environment where students can build musical and creative skills to enjoy for
+        a lifetime. With an emphasis on individualized learning, students receive foundational and essential skills
+        which provide the momentum for a lifetime of success, extending beyond music.</p>
+      <p></p>
+
+      <a href="#contact" onclick="window_close()" class="button opacity palette3 blue-grey hover-red-invert">Book a FREE
+        Consultation</a>
+    </div>
+    <div id="modal01" class="modal black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="button black xxlarge display-topright">×</span>
+      <div class="modal-content animate-zoom center transparent padding-64">
+        <img id="img01" class="image">
+        <p id="caption"></p>
+      </div>
+    </div>
+    <!-- The Students -->
+    <h4 class="padding-top-16"></h4>
+    <div class="row-padding">
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="./images/Beginner.jpg" alt="Beginner" style="width:100%">
+          <div class="container">
+            <h4>Beginner</h4>
+            <p class="opacity">Ages 7-13</p>
+            <p> Music has been shown to enchance attention span, problem-solving, discipline, and patience. Children at
+              this stage also benefit from developing fine motor control and social interactions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="./images/Youth.jpg" alt="Youth" style="width:100%">
+          <div class="container">
+            <h4>Youth</h4>
+            <p class="opacity">Ages 14-18</p>
+            <p>Lessons at this stage are designed to inspire creativity while relying on fundamentals to complete a well
+              rounded musician and artist. </p>
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="./images/Adult.jpg" alt="Adult" style="width:100%">
+          <div class="container">
+            <h4>Adult</h4>
+            <p class="opacity">Age 18+</p>
+            <p>Whether you're starting new hobby or refining your proficiency, adult lessons are tailored to suit your
+              needs. These sessions are intended for adults looking for guidance, resources, tools, feedback, and
+              facilitation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="container" id="services" style="margin-top:75px">
+      <h2 class="xxxlarge palette2"><b>Services</b></h2>
+      <hr style="margin-left:0px;width:80px;border:1px solid red" class="round">
+      <p>Music lessons that focus on inspiring and cultivating a joy for music!</p>
+      <p>Whether its preparing for the next RCM exam or learning a new favourite Rock, Pop, or Jazz song!
+        <br>
+      <ul>
+        <li>Structured Curriculum: Industry proven timelines to ensure progress.</li>
+        <li>Instructor with Real World Experience: Beginners typically need more guidance, and it may be helpful to ask
+          questions and get feedback in real time.</li>
+        <li>Progress Tracking: Seeing your improvements can help keep you motivated. </li>
+        <li>In-Depth Analysis Tools: Providing the tools to build your skills. </li>
+        <li>Personalized Feedback: Tailored instruction to suite the student's needs. </li>
+        <li>Advanced Tutorials: These are excellent additions to teacher-guided lessons.</li>
+      </ul>
+      <a href="#contact" onclick="window_close()" class="button opacity palette3 blue-grey hover-red-invert">Book a FREE
+        Consultation</a>
+      </p>
+      <div class="row-padding">
+        <div class="quarter">
+          <a href="#contact" class="text-black">
+            <img src="./images/sax4.png" style="width:100%"
+              class="button hide-small-image round-xlarge text-black hover-opacity hover-red-invert opacity"
+              onclick="window_close()" alt="Saxophone">
+          </a>
+          <!-- <h6 class="text-black"><b>Saxophone Lessons</b></h6> -->
+        </div>
+
+        <div class="quarter">
+          <a href="#contact" class="text-black">
+            <img src="./images/trumpet.png" style="width:100%"
+              class="button hide-small-image round-xlarge text-black hover-opacity hover-red-invert opacity"
+              onclick="window_close()" alt="Trumpet">
+          </a>
+          <!-- <h6 class="text-black"><b>Clarinet Lessons</b></h6> -->
+        </div>
+
+        <div class="quarter">
+          <a href="#contact" class="text-black">
+            <img src="./images/clarinet4.png" style="width:100%"
+              class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity"
+              onclick="window_close()" alt="Clarinet">
+          </a>
+          <!-- <h6 class="text-black"><b>Piano Lessons</b></h6> -->
+        </div>
+        <div class="quarter">
+          <a href="#contact" class="text-black">
+            <img src="./images/piano4.png" style="width:100%"
+              class="button hide-small-image round-xxlarge text-black hover-opacity hover-red-invert opacity"
+              onclick="window_close()" alt="Piano">
+          </a>
+          <!-- <h6 class="text-black"><b>Theory Lessons</b></h4> -->
+        </div>
+      </div>
+      <!-- <h4 class="padding-top-16"></h4>
+     <div class="row-padding grayscale">
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="" alt="" style="width:100%">
+          <div class="container">
+            <h5 class="center padding-16">In the Studio</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <div class="container">
+            <h5 class="center padding-16">From Home</h5>
+            <img src="./images/background1.jpg" alt="Home" style="width:100%">
+          </div>
+        </div>
+      </div>
+      <div class="col m4 margin-bottom">
+        <div class="light-grey">
+          <img src="" alt="" style="width:100%">
+          <div class="container padding-16">
+            <h5 class="center">Online</h5>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+
+    <!-- Packages / Pricing Tables -->
+    <div class="container" id="packages" style="margin-top:75px">
+      <h2 class="xxxlarge palette2"><b>Packages</b></h2>
+      <hr style="margin-left:0px;width:80px;border:1px solid red" class="round">
+      <p>For a limited time, enjoy the perks of lesson packages. Lessons are also available on a per-lesson basis.
+        <br>For individual lesson booking, use the Contact form at the bottom of the page.
+      </p>
+    </div>
+    <!-- Three Month Package -->
+    <div class="row-padding">
+      <div class="half margin-bottom">
+        <ul class="ul light-grey center">
+          <li class="dark-grey xlarge padding-32">Short Lessons</li>
+          <li class="padding-16">Suitable for Beginners</li>
+          <li class="padding-16"><small>Promo Code</small><br>FIRST12</li>
+          <li class="padding-16">12 weeks - 30 minute lesson per week</li>
+          <li class="padding-16">12.5% discount</li>
+          <li class="padding-16">Three Month Package</li>
+          <li class="padding-16">
+            <h3>$ 35 <span class="opacity" style="font-size:10px"> / 30min lesson</span></h3>
+            <!-- 35 -->
+            <span class="opacity"><strike>$480</strike></span>
+            <span class="opacity">$420 Total</span>
+            <!-- 420 -->
+          </li>
+          <li class="light-grey padding-24">
+            <a href="#contact" onclick="window_close()" class="button white padding-large hover-black">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Advanced Lessons-->
+      <div class="half">
+        <ul class="ul light-grey center">
+          <li class="red-invert xlarge padding-32">Advanced Lessons</li>
+          <li class="padding-16">Best Value</li>
+          <li class="padding-16"><small>Promo Code</small><br>FULL12</li>
+          <li class="padding-16">12 weeks - 1 hour lesson per week</li>
+          <li class="padding-16">25% discount</li>
+          <li class="padding-16">Three Month Package</li>
+          <li class="padding-16">
+            <h3>$ 60 <span class="opacity" style="font-size:10px"> / 1hr lesson</span></h3>
+            <!-- 60 -->
+            <span class="opacity"><strike>$960</strike></span>
+            <span class="opacity">$720 Total</span>
+            <!-- 720 -->
+          </li>
+          <li class="light-grey padding-24">
+            <a href="#contact" onclick="window_close()" class="button red-invert padding-large hover-black">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Staff -->
+    <div class="container" style="margin-top:40px" id="staff">
+      <h2 class="xxxlarge palette2"><b>Our Staff</b></h2>
+      <hr style="margin-left:0px;width:80px;border:1px solid red" class="round">
+    </div>
+    <div class="row-padding">
+      <h4 class="text-dark-grey xlarge"><strong><u>Spencer Brule</u></strong></h4>
+
+      <!-- Spencer -->
+      <img src="./images/spencerbrule.JPG" style="width:25%; float:left; margin-right:5px" onclick="onClick(this)"
+        class="round-large" alt="Spencer Brule"></src>
+      <span>With a soulful blend of expertise and passion, Spencer Brule stands as a pillar in the realm of saxophone
+        education. Renowned for his commitment to excellence and unwavering dedication to mentorship, Spencer has carved
+        a distinguished path as a professional saxophonist and teacher. </span>
+      <span><br><br>After completing a Bachelor’s of Music Degree at the University of Toronto, Spencer embarked on a
+        mission to inspire and educate aspiring saxophonists. His teaching methodology is a harmonious blend of
+        tradition and innovation, rooted in classical techniques while embracing contemporary trends. Spencer believes
+        in a dynamic approach to teaching which fosters creativity and self-expression, nurturing the passion and
+        inspiring the confidence of saxophonists. </span>
+      <span><br><br>Having held esteemed positions such as Lead Saxophone Instructor at Canadian Forces Music Division,
+        Leader of CAF Saxophone Quartet, and Saxophone Section Leader in the RCAF Band, Spencer has inspired countless
+        colleagues and students over his 10+ years of experience. Spencer Brule is a gifted saxophonist having performed
+        internationally at the North American Saxophone Alliance 2022 in Hattiesburg, MS, and at the Canadian Embassy in
+        Washington, DC. Spencer has also performed for heads of state such as the Queen of England in London, UK, Prime
+        Minister Justin Trudeau, and Governor General Julie Payette in Ottawa, ON.</span>
+      <span><br><br>His contributions to the world of Saxophone extend far and wide, through masterclasses, clinics,
+        private lessons, and performances leaving an indelible mark on the next generation of saxophonists. </span>
+      <span><br><br>Spencer Brule resides in Winnipeg, MB where he spends his days as a professional saxophonist and
+        educator.</span>
+
+
+      <hr style="border:1px solid black" class="round">
+
+      <!-- Jordan -->
+      <h4 class="text-dark-grey xlarge"><strong><u>Jordan Smale</u></strong></h4>
+
+      <img src="./images/jordansmale.jpg" style="width:25%; float:left; margin-right:5px" onclick="onClick(this)"
+        class="round-large" alt="Spencer Brule"></src>
+
+      <span>Jordan Smale began his musical studies at age 10 starting with piano, which he studied for 10 years at the
+        Brentwood School of Music in Brentwood Bay, British Columbia. At age 11, Jordan picked up the trumpet for school
+        band and he began his studies with his first trumpet teacher, Joanne Allers at age 16 to begin preparing for a
+        university audition. After graduating from high school, he commenced studies at the University of Victoria and
+        completed a Bachelor of Music in Secondary Education, studying under renowned trumpeters Louis Ranger and Merrie
+        Klazek. However, Jordan caught the performance bug and instead of finishing his secondary education studies, he
+        decided to pursue a Master’s Degree at the University of Alberta, under the tutelage of the Edmonton Symphony
+        Orchestra’s principal trumpet, Robin Doyon.
+        <span><br><br>During his time in Edmonton, Jordan had the opportunity to perform with the Edmonton Symphony, as
+          well as the Royal Canadian Artillery Band. Jordan was also an in-demand trumpet clinician in the Edmonton
+          Region, working with multiple middle schools and the Alberta Conservatory teaching beginner trumpet clinics.
+          Outside of civilian life, Jordan joined the Canadian Army Reserves in 2017 to join one of the professional
+          part-time military bands, starting out first with the Band of the 5 th Field Regiment RCA in Victoria, and
+          later playing with the Loyal Edmonton Regiment Band. </span>
+        <span><br><br>In 2023, Jordan passed an audition a spot with one of Canada’s six full time professional military
+          bands and was posted to the Royal Canadian Air Force Band in Winnipeg, Manitoba, where he calls home now.
+          Jordan has a passion for music education and performance and wishes to pass on that passion to future
+          musicians. Jordan has experience working and teaching all ages and all levels and experience. </span>
+    </div>
+
+
+    <!-- Contact -->
+    <div class="container" id="contact" style="margin-top:75px">
+      <h2 class="xxxlarge palette3"><b>Contact</b></h2>
+      <hr style="margin-left:0px;width:80px;border:1px solid black" class="round">
+      <p>Interested in adding more music to your life? Include a bit about yourself below!</p>
+      <form action="https://formsubmit.co/ccb2cf7367efb458c39408363474026b" method="POST">
+        <div class="section">
+          <label>Name</label>
+          <input class="input border" type="text" name="Name" required>
+        </div>
+        <div class="section">
+          <label>Email</label>
+          <input class="input border" type="text" name="Email" required>
+        </div>
+        <div class="section">
+          <label>PromoCode</label>
+          <input class="input border" type="text" name="PromoCode">
+        </div>
+        <div class="section">
+          <label>Message</label>
+          <textarea class="message border" type="text" name="Message" style="height:200px; width:100%"
+            required></textarea>
+        </div>
+        <button type="submit" class="button block padding-large palette3-invert margin-bottom">Send Message</button>
+      </form>
+    </div>
+
+
+    <!-- End page content -->
   </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
-
-  <form action="https://formsubmit.co/ccb2cf7367efb458c39408363474026b" method="POST">
-    <input name="Name" placeholder="Name" required />
-    <input name="Email" placeholder="Email" required />
-    <textarea name="Message" placeholder="Message" required></textarea>
-    <button type="submit" class="button primary">Send Message</button>
-  </form>
-</section>
-
-</main>
 
 <script>
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
+  const dropBtn = document.querySelector('.dropbtn');
+  const dropdown = document.getElementById('mainDropdown');
 
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+  dropBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const expanded = dropBtn.getAttribute('aria-expanded') === 'true';
+    dropBtn.setAttribute('aria-expanded', !expanded);
+    dropdown.classList.toggle('show');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', () => {
+    dropdown.classList.remove('show');
+    dropBtn.setAttribute('aria-expanded', 'false');
+  });
+
+  // Prevent closing when clicking inside
+  dropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
   });
 </script>
 
+
 </body>
+
 </html>
