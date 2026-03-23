@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>REPL Chopper Idle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body>  
+    <script
+    src="https://cdn.jsdelivr.net/npm/@electric-sql/pglite-repl/dist-webcomponent/Repl.js"
+    type="module"
+    ></script>
+
+    <details> 
+        <summary>Show/Hide REPL</summary>
+    </details>
+    <!-- Include the Repl web component in your page -->
+    <pglite-repl id="repl"></pglite-repl>
+
+    <script type="module">
+    import { PGlite } from 'https://cdn.jsdelivr.net/npm/@electric-sql/pglite/dist/index.js'
+    // read the contents of create-tables.sql into a string
+    import ddl from './create-tables.sql?raw'
+
+    // Create a PGlite instance
+    // Telling it 
+    const pg = new PGlite('idb://2452-IDLE')
+    
+    // Runs all of the create table statements 
+    pg.exec(ddl);
+
+    console.log(ddl)
+
+
+    // Retrieve the Repl element
+    const repl = document.getElementById('repl')
+
+    // REPL to your PGlite instance
+    repl.pg = pg
+    </script>
+</body>
+</html>
+

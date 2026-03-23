@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chopper Idle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body>  
+    <header class="header" role="banner">
+        <div class="container header-inner">
+            <div id="logout" class="logout">
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+            <h1 class="game-title">Chopper Idle</h1>
+            <div id="gold-counter" class="gold-counter">
+                <div class="gold-text"></div>
+                <span class="gold-icon">🪙</span>
+                <div id="gold-amount" class="gold-amount"></div>
+            </div>
+
+        </div>
+    </header>
+    <div class="app">
+        <div class="split-container">
+            <div class="half half-left">
+                <h2 class="team-header">Team Members</h2>
+                <div id='team-container' class="team-container center">
+                <!--added by playerView class-->
+                </div>
+            </div>
+            <div class="half half-center">
+                <div id='click-container' class="click-container center">
+                <!--added by playerView class-->
+                </div>
+            </div>
+
+            <div class="half half-right">
+                <h2 class="tools-header">Tools</h2>
+                <div id='upgrade-container' class="upgrade-container center">
+                    
+                    <!-- 1. the page is loaded, 2. start running code -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+    
+    <script
+    src="https://cdn.jsdelivr.net/npm/@electric-sql/pglite-repl/dist-webcomponent/Repl.js"
+    type="module"
+    ></script>
+    
+    <details> 
+        <summary>Show/Hide REPL</summary>
+    </details> 
+    
+    <!-- Include the Repl web component in your page -->
+    <pglite-repl id="repl"></pglite-repl>
+    
+    <script type="module">
+    import db from "./src/model/connection.ts"    
+    // Retrieve the Repl element
+    const repl = document.getElementById('repl')
+    
+    // REPL to your PGlite instance
+    repl.pg = db()
+    </script>
+</body>
+</html>
 
